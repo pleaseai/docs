@@ -29,33 +29,27 @@ Built with **shadcn-vue** and **Nuxt Content**.
 
 ::div{.grid.grid-cols-1.md:grid-cols-2.lg:grid-cols-3.gap-6.mt-8}
 
-::div{.rounded-lg.border.bg-card.p-6}
-### shadcn-vue Components
+::FeatureCard{title="shadcn-vue Components"}
 Beautiful, accessible UI components built with Reka UI primitives and styled with Tailwind CSS.
 ::
 
-::div{.rounded-lg.border.bg-card.p-6}
-### Tailwind CSS v4
+::FeatureCard{title="Tailwind CSS v4"}
 Modern CSS with native CSS variables, oklch colors, and lightning-fast performance.
 ::
 
-::div{.rounded-lg.border.bg-card.p-6}
-### Dark Mode
+::FeatureCard{title="Dark Mode"}
 Built-in dark/light mode support with smooth transitions and system preference detection.
 ::
 
-::div{.rounded-lg.border.bg-card.p-6}
-### MDC Syntax
+::FeatureCard{title="MDC Syntax"}
 Write pages in Markdown and extend with MDC syntax to embed Vue components seamlessly.
 ::
 
-::div{.rounded-lg.border.bg-card.p-6}
-### Full-text Search
+::FeatureCard{title="Full-text Search"}
 Auto-generated navigation and full-text search for your documentation.
 ::
 
-::div{.rounded-lg.border.bg-card.p-6}
-### Nuxt Layer
+::FeatureCard{title="Nuxt Layer"}
 Reusable Nuxt layer architecture - extend and customize to fit your needs.
 ::
 
