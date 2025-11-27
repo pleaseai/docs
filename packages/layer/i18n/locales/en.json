@@ -1,0 +1,14 @@
+{
+  "common": {
+    "or": "or",
+    "error": {
+      "title": "Something went wrong",
+      "description": "An error occurred while loading this page."
+    }
+  },
+  "docs": {
+    "toc": "On this page",
+    "edit": "Edit this page",
+    "report": "Report an issue"
+  }
+}

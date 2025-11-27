@@ -1,0 +1,35 @@
+{
+  "name": "docs-please-workspace",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "bun run --cwd apps/docs dev",
+    "build": "bun run --cwd apps/docs build",
+    "generate": "bun run --cwd apps/docs generate",
+    "preview": "bun run --cwd apps/docs preview",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pleaseai/docs.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pleaseai/docs/issues"
+  },
+  "homepage": "https://github.com/pleaseai/docs#readme",
+  "devDependencies": {
+    "@antfu/eslint-config": "^6.2.0",
+    "eslint": "^9.38.0",
+    "eslint-plugin-format": "^1.0.2"
+  },
+  "packageManager": "bun@1.3.2",
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ]
+}
