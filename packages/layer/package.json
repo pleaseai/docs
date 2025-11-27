@@ -1,6 +1,6 @@
 {
   "name": "@pleaseai/docs",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Nuxt layer for documentation sites using shadcn-vue",
   "type": "module",
   "main": "./nuxt.config.ts",
