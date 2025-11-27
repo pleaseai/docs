@@ -11,7 +11,7 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
-    "@pleaseai/docs-layer": "workspace:*"
+    "@pleaseai/docs": "workspace:*"
   },
   "devDependencies": {
     "nuxt": "^4.2.1"

@@ -4,13 +4,13 @@
   "packages": {
     "packages/layer": {
       "release-type": "node",
-      "package-name": "@pleaseai/docs-layer",
-      "component": "layer"
+      "package-name": "@pleaseai/docs",
+      "component": "docs-please"
     },
     "apps/docs": {
       "release-type": "node",
       "package-name": "@pleaseai/docs-docs",
-      "component": "docs"
+      "component": "docs-please-docs"
     }
   },
   "changelog-sections": [
