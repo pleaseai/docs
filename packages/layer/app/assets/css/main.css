@@ -3,6 +3,7 @@
 
 /* Tailwind CSS v4: Source detection for layer components */
 @source "../../components/**/*.vue";
+@source "../../components/**/*.ts";
 @source "../../layouts/**/*.vue";
 @source "../../pages/**/*.vue";
 
