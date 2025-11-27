@@ -1,0 +1,9 @@
+[submodule "ref/shadcn-vue"]
+	path = ref/shadcn-vue
+	url = https://github.com/unovue/shadcn-vue
+[submodule "ref/fumadocs"]
+	path = ref/fumadocs
+	url = https://github.com/fuma-nama/fumadocs
+[submodule "ref/docus"]
+	path = ref/docus
+	url = https://github.com/nuxt-content/docus
