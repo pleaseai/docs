@@ -17,8 +17,8 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
 
   components: [
-    { path: resolve('./app/components') },
-    { path: resolve('./app/components/ui'), pathPrefix: false },
+    { path: resolve('./app/components'), ignore: ['ui/**/*', 'content/**/*'] },
+    // UI components are NOT globally registered - import explicitly from ~/components/ui/*
     { path: resolve('./app/components/content'), global: true, pathPrefix: false },
   ],
 
@@ -71,6 +71,12 @@ export default defineNuxtConfig({
       autoSubfolderIndex: false,
     },
   },
-
   compatibilityDate: '2025-01-01',
+    ogImage: {
+        fonts: [
+            'Geist:400',
+            'Geist:500',
+            'Geist:600',
+        ],
+    },
 })

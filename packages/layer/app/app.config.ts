@@ -1,7 +1,7 @@
 export default defineAppConfig({
   docs: {
     title: 'Documentation',
-    description: 'Documentation site powered by @pleaseai/docs-layer',
+    description: 'Documentation site powered by @pleaseai/docs',
     url: '',
     github: {
       owner: '',

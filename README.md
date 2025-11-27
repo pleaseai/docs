@@ -4,7 +4,7 @@ A documentation system using **shadcn-vue** + **Nuxt Content**, inspired by Docu
 
 ## Packages
 
-### @pleaseai/docs-layer
+### @pleaseai/docs
 
 A Nuxt layer for documentation sites. Replaces nuxt-ui with shadcn-vue components.
 
@@ -40,7 +40,7 @@ bun dev
 ```
 docs/
 ├── packages/
-│   └── layer/              # @pleaseai/docs-layer
+│   └── layer/              # @pleaseai/docs
 │       ├── app/            # Vue components, layouts, pages
 │       ├── modules/        # Nuxt modules (config, css)
 │       └── ...

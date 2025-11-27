@@ -1,6 +1,11 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
+/* Tailwind CSS v4: Source detection for layer components */
+@source "../../components/**/*.vue";
+@source "../../layouts/**/*.vue";
+@source "../../pages/**/*.vue";
+
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {

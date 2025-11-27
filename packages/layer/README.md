@@ -1,4 +1,4 @@
-# @pleaseai/docs-layer
+# @pleaseai/docs
 
 A Nuxt layer for documentation sites using **shadcn-vue** instead of nuxt-ui.
 
@@ -13,13 +13,13 @@ This layer provides a complete documentation theme built with:
 
 ```bash
 # Install the layer
-pnpm add @pleaseai/docs-layer
+pnpm add @pleaseai/docs
 ```
 
 ```typescript
 // nuxt.config.ts
 export default defineNuxtConfig({
-  extends: ['@pleaseai/docs-layer']
+  extends: ['@pleaseai/docs']
 })
 ```
 

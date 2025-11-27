@@ -217,7 +217,7 @@ Override markdown rendering:
 
 ---
 
-## 6. Design Decisions for @pleaseai/docs-layer
+## 6. Design Decisions for @pleaseai/docs
 
 1. **No nuxt-ui** - Use reka-ui primitives via shadcn-vue
 2. **Tailwind v4** - oklch colors, @theme inline
