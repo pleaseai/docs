@@ -4,12 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "bun run --cwd apps/docs dev",
-    "build": "bun run --cwd apps/docs build",
-    "generate": "bun run --cwd apps/docs generate",
-    "preview": "bun run --cwd apps/docs preview",
+    "dev": "dotenvx run -- bun run --cwd apps/docs dev",
+    "build": "dotenvx run -- bun run --cwd apps/docs build",
+    "generate": "dotenvx run -- bun run --cwd apps/docs generate",
+    "preview": "dotenvx run -- bun run --cwd apps/docs preview",
     "lint": "eslint .",
-    "lint:fix": "eslint . --fix"
+    "lint:fix": "eslint . --fix",
+    "env:encrypt": "dotenvx encrypt",
+    "env:decrypt": "dotenvx decrypt"
   },
   "repository": {
     "type": "git",
@@ -24,6 +26,7 @@
   "homepage": "https://github.com/pleaseai/docs#readme",
   "devDependencies": {
     "@antfu/eslint-config": "^6.2.0",
+    "@dotenvx/dotenvx": "^1.34.0",
     "eslint": "^9.38.0",
     "eslint-plugin-format": "^1.0.2"
   },
