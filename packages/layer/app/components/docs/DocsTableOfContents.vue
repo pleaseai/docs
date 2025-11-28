@@ -27,7 +27,8 @@ onMounted(() => {
 
   props.toc?.forEach((item) => {
     const el = document.getElementById(item.id)
-    if (el) observer.observe(el)
+    if (el)
+      observer.observe(el)
   })
 
   onUnmounted(() => observer.disconnect())

@@ -28,15 +28,15 @@ layer/
 
 ### Key Components (nuxt-ui based)
 
-| Component | Purpose |
-|-----------|---------|
-| `UApp` | Root wrapper with locale |
-| `UHeader`, `UFooter` | Site chrome |
-| `UPage`, `UPageAside` | Page layout |
-| `UContentNavigation` | Sidebar navigation |
-| `UContentToc` | Table of contents |
-| `UContentSearch` | Search command palette |
-| `UContentSurround` | Prev/Next navigation |
+| Component             | Purpose                  |
+| --------------------- | ------------------------ |
+| `UApp`                | Root wrapper with locale |
+| `UHeader`, `UFooter`  | Site chrome              |
+| `UPage`, `UPageAside` | Page layout              |
+| `UContentNavigation`  | Sidebar navigation       |
+| `UContentToc`         | Table of contents        |
+| `UContentSearch`      | Search command palette   |
+| `UContentSurround`    | Prev/Next navigation     |
 
 ### Composables
 
@@ -94,18 +94,18 @@ apps/v4/
 
 Core components used for documentation:
 
-| Component | Files | Purpose |
-|-----------|-------|---------|
-| `Sidebar` | 10+ files | Navigation sidebar |
-| `Command` | 7 files | Search palette |
-| `Button` | 1 file | Actions |
-| `Dialog` | 4 files | Modals |
-| `Sheet` | 4 files | Mobile drawer |
-| `DropdownMenu` | 8 files | Menus |
-| `Tooltip` | 3 files | Hover info |
-| `Alert` | 3 files | Callouts |
-| `Collapsible` | 3 files | Expandable |
-| `ScrollArea` | 2 files | Custom scroll |
+| Component      | Files     | Purpose            |
+| -------------- | --------- | ------------------ |
+| `Sidebar`      | 10+ files | Navigation sidebar |
+| `Command`      | 7 files   | Search palette     |
+| `Button`       | 1 file    | Actions            |
+| `Dialog`       | 4 files   | Modals             |
+| `Sheet`        | 4 files   | Mobile drawer      |
+| `DropdownMenu` | 8 files   | Menus              |
+| `Tooltip`      | 3 files   | Hover info         |
+| `Alert`        | 3 files   | Callouts           |
+| `Collapsible`  | 3 files   | Expandable         |
+| `ScrollArea`   | 2 files   | Custom scroll      |
 
 ### Styling (Tailwind v4)
 
@@ -144,6 +144,7 @@ Core components used for documentation:
 ### Prose Components
 
 Override markdown rendering:
+
 - `ProseH1.vue` - `ProseH6.vue`
 - `ProseP.vue`, `ProseA.vue`
 - `ProsePre.vue`, `ProseCode.vue`
@@ -153,25 +154,26 @@ Override markdown rendering:
 
 ## 3. Component Mapping
 
-| Docus (nuxt-ui) | Layer (shadcn-vue) |
-|-----------------|-------------------|
-| `UApp` | Remove (plain div) |
-| `UHeader` | Custom `AppHeader.vue` |
-| `UFooter` | Custom `AppFooter.vue` |
-| `UPage` | CSS Grid layout |
-| `UPageAside` | shadcn `Sidebar` |
-| `UContentNavigation` | `DocsSidebar.vue` |
-| `UContentToc` | `DocsTableOfContents.vue` |
-| `UContentSurround` | `DocsPageNav.vue` |
-| `UContentSearch` | shadcn `Command` + `Dialog` |
-| `UButton` | shadcn `Button` |
-| `UColorModeButton` | `ModeSwitcher.vue` |
+| Docus (nuxt-ui)      | Layer (shadcn-vue)          |
+| -------------------- | --------------------------- |
+| `UApp`               | Remove (plain div)          |
+| `UHeader`            | Custom `AppHeader.vue`      |
+| `UFooter`            | Custom `AppFooter.vue`      |
+| `UPage`              | CSS Grid layout             |
+| `UPageAside`         | shadcn `Sidebar`            |
+| `UContentNavigation` | `DocsSidebar.vue`           |
+| `UContentToc`        | `DocsTableOfContents.vue`   |
+| `UContentSurround`   | `DocsPageNav.vue`           |
+| `UContentSearch`     | shadcn `Command` + `Dialog` |
+| `UButton`            | shadcn `Button`             |
+| `UColorModeButton`   | `ModeSwitcher.vue`          |
 
 ---
 
 ## 4. Key Files to Reference
 
 ### From Docus
+
 - `modules/config.ts` - Configuration module pattern
 - `modules/routing.ts` - Routing with i18n support
 - `content.config.ts` - Content collections
@@ -179,6 +181,7 @@ Override markdown rendering:
 - `app/pages/[[lang]]/[...slug].vue` - Docs page
 
 ### From shadcn-vue
+
 - `assets/css/main.css` - Tailwind v4 theme
 - `registry/new-york-v4/ui/sidebar/` - Sidebar components
 - `registry/new-york-v4/ui/command/` - Command palette
@@ -191,6 +194,7 @@ Override markdown rendering:
 ## 5. Dependencies
 
 ### Docus
+
 ```json
 {
   "@nuxt/ui": "^4.2.1",
@@ -202,6 +206,7 @@ Override markdown rendering:
 ```
 
 ### shadcn-vue
+
 ```json
 {
   "reka-ui": "^2.2.1",

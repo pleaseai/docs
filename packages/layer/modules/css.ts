@@ -1,4 +1,4 @@
-import { defineNuxtModule, addTemplate, createResolver } from '@nuxt/kit'
+import { addTemplate, createResolver, defineNuxtModule } from '@nuxt/kit'
 import { joinURL } from 'ufo'
 
 export default defineNuxtModule({

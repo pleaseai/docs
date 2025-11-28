@@ -72,6 +72,7 @@ packages/layer/
 ### Configuration Schema
 
 Site configuration in `app.config.ts`:
+
 - `docs.title` - Site title
 - `docs.description` - Site description
 - `docs.url` - Site URL
@@ -80,6 +81,7 @@ Site configuration in `app.config.ts`:
 ### Using the Layer
 
 Apps extend the layer via `nuxt.config.ts`:
+
 ```ts
 export default defineNuxtConfig({
   extends: ['@pleaseai/docs-layer'],

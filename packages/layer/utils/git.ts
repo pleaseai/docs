@@ -1,4 +1,5 @@
 import { execSync } from 'node:child_process'
+import process from 'node:process'
 
 export interface GitInfo {
   name: string
@@ -6,7 +7,7 @@ export interface GitInfo {
   url: string
 }
 
-export function getGitBranch() {
+export function getGitBranch(): string {
   const envName
     = process.env.CF_PAGES_BRANCH
       || process.env.CI_COMMIT_BRANCH

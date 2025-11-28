@@ -1,7 +1,8 @@
 import { readFile } from 'node:fs/promises'
 import { resolve } from 'node:path'
+import process from 'node:process'
 
-export function inferSiteURL() {
+export function inferSiteURL(): string | undefined {
   return (
     process.env.NUXT_SITE_URL
     || (process.env.NEXT_PUBLIC_VERCEL_URL && `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`)
@@ -11,7 +12,7 @@ export function inferSiteURL() {
   )
 }
 
-export async function getPackageJsonMetadata(dir: string) {
+export async function getPackageJsonMetadata(dir: string): Promise<{ name: string, description?: string }> {
   try {
     const packageJson = await readFile(resolve(dir, 'package.json'), 'utf-8')
     const parsed = JSON.parse(packageJson)

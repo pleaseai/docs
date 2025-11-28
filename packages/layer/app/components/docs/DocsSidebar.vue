@@ -1,12 +1,11 @@
 <script setup lang="ts">
 import { ChevronRight } from 'lucide-vue-next'
-import type { NavigationItem } from '~/composables/useNavigation'
 
 const { data: navigation } = await useNavigation()
 const route = useRoute()
 
 function isActive(path: string) {
-  return route.path === path || route.path.startsWith(path + '/')
+  return route.path === path || route.path.startsWith(`${path}/`)
 }
 </script>
 

@@ -27,7 +27,7 @@ function mapWithType(item: ContentNavigationItem): NavigationItem {
   }
 }
 
-export async function useNavigation() {
+export async function useNavigation(): Promise<{ data: Ref<NavigationItem[]> }> {
   const { data } = useAsyncData('navigation', () => {
     return queryCollectionNavigation('docs')
   }, {

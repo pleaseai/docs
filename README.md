@@ -9,6 +9,7 @@ A documentation system using **shadcn-vue** + **Nuxt Content**, inspired by Docu
 A Nuxt layer for documentation sites. Replaces nuxt-ui with shadcn-vue components.
 
 **Features:**
+
 - shadcn-vue UI components (Button, Separator, etc.)
 - Tailwind CSS v4 with CSS variables (oklch colors)
 - Documentation layout with sidebar navigation
