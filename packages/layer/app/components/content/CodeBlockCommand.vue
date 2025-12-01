@@ -5,14 +5,14 @@ import {
   TabsContent,
   TabsList,
   TabsTrigger,
-} from '@/components/ui/tabs'
+} from '~/components/ui/tabs'
 
 const props = defineProps<{
   code: string
 }>()
 
 const tabs = computed(() => {
-  const data = { pnpm: '', npm: '', yarn: '', bun: '' }
+  const data = { bun: '', pnpm: '', npm: '', yarn: '' }
 
   if (props.code.includes('npm install')) {
     data.npm = props.code
@@ -59,18 +59,31 @@ const { config } = useConfig()
           <TerminalIcon class="text-code size-3" />
         </div>
         <TabsList class="rounded-none bg-transparent p-0">
-          <TabsTrigger v-for="key in Object.keys(tabs)" :key="key" :value="key" class="data-[state=active]:bg-accent data-[state=active]:border-input h-7 border border-transparent pt-0.5 data-[state=active]:shadow-none">
+          <TabsTrigger
+            v-for="key in Object.keys(tabs)"
+            :key="key"
+            :value="key"
+            class="data-[state=active]:bg-accent data-[state=active]:border-input h-7 border border-transparent pt-0.5 data-[state=active]:shadow-none"
+          >
             {{ key }}
           </TabsTrigger>
         </TabsList>
       </div>
 
       <div class="no-scrollbar overflow-x-auto">
-        <TabsContent v-for="([key, value]) in Object.entries(tabs)" :key="key" :value="key" class="mt-0 px-4 py-3.5">
+        <TabsContent
+          v-for="([key, value]) in Object.entries(tabs)"
+          :key="key"
+          :value="key"
+          class="mt-0 px-4 py-3.5"
+        >
           <pre class="language-bash shiki shiki-themes github-light-default github-dark"><code class="relative font-mono text-sm leading-none"><span class="line"><span>{{ value }}</span></span></code></pre>
         </TabsContent>
       </div>
     </Tabs>
-    <CopyButton class="absolute top-2 right-2 z-10 size-7 opacity-70 hover:opacity-100 focus-visible:opacity-100" :value="tabs[config.packageManager]" />
+    <CopyButton
+      class="absolute top-2 right-2 z-10 size-7 opacity-70 hover:opacity-100 focus-visible:opacity-100"
+      :value="tabs[config.packageManager]"
+    />
   </div>
 </template>

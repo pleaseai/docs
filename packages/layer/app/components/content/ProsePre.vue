@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
-import { getIconForLanguageExtension } from '@/components/Icons'
+import { getIconForLanguageExtension } from '~/components/Icons'
 import { cn } from '~/lib/utils'
 
 const props = defineProps<{

@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
-import { cn } from '@/lib/utils'
-import { Button } from '@/components/ui/button'
+import { cn } from '~/lib/utils'
+import { Button } from '~/components/ui/button'
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-} from '@/components/ui/collapsible'
-import { Separator } from '@/components/ui/separator'
+} from '~/components/ui/collapsible'
+import { Separator } from '~/components/ui/separator'
 
 const props = defineProps<{
   class?: HTMLAttributes['class']

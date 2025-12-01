@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
-import type { AlertVariants } from '@/components/ui/alert'
+import type { AlertVariants } from '~/components/ui/alert'
 import { InfoIcon } from 'lucide-vue-next'
-import { cn } from '@/lib/utils'
+import { cn } from '~/lib/utils'
 import {
   Alert,
   AlertDescription,
   AlertTitle,
-} from '@/components/ui/alert'
+} from '~/components/ui/alert'
 
 const props = defineProps<{
   icon?: boolean

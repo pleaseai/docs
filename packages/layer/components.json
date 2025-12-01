@@ -1,21 +1,18 @@
 {
   "$schema": "https://shadcn-vue.com/schema.json",
-  "style": "new-york",
+  "style": "new-york-v4",
   "typescript": true,
   "tailwind": {
-    "config": "",
     "css": "app/assets/css/main.css",
     "baseColor": "neutral",
-    "cssVariables": true,
-    "prefix": ""
+    "cssVariables": true
   },
-  "iconLibrary": "lucide",
   "aliases": {
-    "components": "@/components",
-    "utils": "@/lib/utils",
-    "ui": "@/components/ui",
-    "lib": "@/lib",
-    "composables": "@/composables"
+    "components": "~/components",
+    "ui": "~/components/ui",
+    "utils": "~/lib/utils",
+    "lib": "~/lib",
+    "composables": "~/composables"
   },
-  "registries": {}
+  "iconLibrary": "lucide"
 }

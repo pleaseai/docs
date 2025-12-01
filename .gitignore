@@ -408,3 +408,5 @@ $RECYCLE.BIN/
 .nitro
 .cache
 dist
+
+.claude/settings.local.json

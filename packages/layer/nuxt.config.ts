@@ -88,4 +88,11 @@ export default defineNuxtConfig({
     },
   },
   compatibilityDate: '2025-01-01',
+  ogImage: {
+    fonts: [
+      'Geist:400',
+      'Geist:500',
+      'Geist:600',
+    ],
+  },
 })

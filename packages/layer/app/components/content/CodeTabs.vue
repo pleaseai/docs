@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Tabs } from '@/components/ui/tabs'
+import { Tabs } from '~/components/ui/tabs'
 
 const { config } = useConfig()
 </script>

@@ -10,17 +10,11 @@ const props = defineProps<{
   class?: HTMLAttributes['class']
 }>()
 
-const Component = props.type === 'block'
-  ? defineAsyncComponent({
-      loader: () => import(`@/registry/new-york-v4/blocks/${props.name}/page.vue`),
-    })
-  : props.name.toLowerCase().includes('chart') && !props.name.toLocaleLowerCase().includes('demo')
-    ? defineAsyncComponent({
-        loader: () => import(`@/registry/new-york-v4/charts/${props.name}.vue`),
-      })
-    : defineAsyncComponent({
-        loader: () => import(`@/components/demo/${props.name}.vue`),
-      })
+// For now, only support demo components - blocks and charts are not supported in the docs layer
+const Component = defineAsyncComponent({
+  loader: () => import(`~/components/demo/${props.name}.vue`),
+  errorComponent: () => null,
+})
 </script>
 
 <template>

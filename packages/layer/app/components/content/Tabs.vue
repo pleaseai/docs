@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
-import { Tabs } from '@/components/ui/tabs'
+import { Tabs } from '~/components/ui/tabs'
 import { cn } from '~/lib/utils'
 
 const props = defineProps<{ class?: HTMLAttributes['class'] }>()

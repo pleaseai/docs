@@ -13,7 +13,7 @@ const title = computed(() => appConfig.docs?.title || 'Docs')
           target="_blank"
           class="font-medium underline underline-offset-4"
         >
-          @pleaseai/docs-layer
+          @pleaseai/docs
         </NuxtLink>
       </p>
       <p class="text-center text-sm text-muted-foreground md:text-right">

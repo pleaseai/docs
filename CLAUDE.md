@@ -36,13 +36,13 @@ cd packages/layer && bun typecheck
 
 ### Monorepo Structure
 
-- **`packages/layer`** (`@pleaseai/docs-layer`) - The main Nuxt layer package
+- **`packages/layer`** (`@pleaseai/docs`) - The main Nuxt layer package
 - **`apps/docs`** (`@pleaseai/docs-site`) - Example documentation site using the layer
 - **`ref/`** - Git submodules containing reference projects (docus, shadcn-vue, fumadocs)
 
 ### Layer Package (`packages/layer`)
 
-The `@pleaseai/docs-layer` is a Nuxt 4 layer that provides:
+The `@pleaseai/docs` is a Nuxt 4 layer that provides:
 
 ```
 packages/layer/
@@ -84,7 +84,7 @@ Apps extend the layer via `nuxt.config.ts`:
 
 ```ts
 export default defineNuxtConfig({
-  extends: ['@pleaseai/docs-layer'],
+  extends: ['@pleaseai/docs'],
 })
 ```
 
