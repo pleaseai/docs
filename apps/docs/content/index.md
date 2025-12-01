@@ -1,9 +1,9 @@
 ---
-title: Welcome to PleaseAI Docs
+title: Welcome to Docs Please
 description: A documentation layer using shadcn-vue and Nuxt Content
 ---
 
-# PleaseAI Docs
+# Docs Please
 
 A modern documentation system built with **shadcn-vue** and **Nuxt Content**.
 
@@ -19,11 +19,11 @@ A modern documentation system built with **shadcn-vue** and **Nuxt Content**.
 
 ```bash
 # Install the layer
-pnpm add @pleaseai/docs-layer
+pnpm add @pleaseai/docs
 
 # Extend in nuxt.config.ts
 export default defineNuxtConfig({
-  extends: ['@pleaseai/docs-layer']
+  extends: ['@pleaseai/docs']
 })
 ```
 

@@ -6,6 +6,18 @@ const { resolve } = createResolver(import.meta.url)
 export default defineNuxtConfig({
   hooks: {
     'components:dirs': (dirs) => {
+      // Register app components from the layer directory
+      dirs.push({
+        path: resolve('./app/components/app'),
+        pathPrefix: false,
+        global: true,
+      })
+      // Register docs components from the layer directory
+      dirs.push({
+        path: resolve('./app/components/docs'),
+        pathPrefix: false,
+        global: true,
+      })
       // Register content components from the layer directory
       dirs.push({
         path: resolve('./app/components/content'),
@@ -26,15 +38,6 @@ export default defineNuxtConfig({
     '@nuxt/eslint',
   ],
   devtools: { enabled: true },
-  shadcn: {
-    /**
-     * Directory that the component lives in.
-     * Will respect the Nuxt aliases.
-     * @link https://nuxt.com/docs/api/nuxt-config#alias
-     * @default "@/components/ui"
-     */
-    componentDir: '@/components/ui',
-  },
   css: [resolve('./app/assets/css/main.css')],
   content: {
     build: {
