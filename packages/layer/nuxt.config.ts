@@ -1,9 +1,19 @@
-import { createResolver } from '@nuxt/kit'
+import { addComponentsDir, createResolver } from '@nuxt/kit'
 import tailwindcss from '@tailwindcss/vite'
 
 const { resolve } = createResolver(import.meta.url)
 
 export default defineNuxtConfig({
+  hooks: {
+    'components:dirs': (dirs) => {
+      // Register content components from the layer directory
+      dirs.push({
+        path: resolve('./app/components/content'),
+        pathPrefix: false,
+        global: true,
+      })
+    },
+  },
   modules: [
     resolve('./modules/config'),
     resolve('./modules/css'),

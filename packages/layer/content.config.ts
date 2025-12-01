@@ -1,4 +1,9 @@
 import { defineCollection, defineContentConfig, z } from '@nuxt/content'
+import { useNuxt } from '@nuxt/kit'
+import { joinURL } from 'ufo'
+
+const { options } = useNuxt()
+const cwd = joinURL(options.rootDir, 'content')
 
 const docsSchema = z.object({
   links: z.array(z.object({
@@ -14,12 +19,14 @@ export default defineContentConfig({
     landing: defineCollection({
       type: 'page',
       source: {
+        cwd,
         include: 'index.md',
       },
     }),
     docs: defineCollection({
       type: 'page',
       source: {
+        cwd,
         include: '**',
         exclude: ['index.md'],
       },
