@@ -74,9 +74,9 @@ const codeAttributes = computed(() => isShowingLineNumber.value
         <component :is="IconExtension" v-if="IconExtension" />
         {{ title }}
       </figcaption>
-      <pre :data-language="lang" :class="cn('no-scrollbar min-w-0 overflow-x-auto px-4 py-3.5 outline-none has-[[data-highlighted-line]]:px-0 has-[[data-line-numbers]]:px-0 has-[[data-slot=tabs]]:p-0', props.class)"><CopyButton :value="code" /><code v-bind="codeAttributes" v-html="highlighted" /></pre>
+      <pre :data-language="lang" :class="cn('relative no-scrollbar min-w-0 overflow-x-auto px-4 py-3.5 outline-none has-[[data-highlighted-line]]:px-0 has-[[data-line-numbers]]:px-0 has-[[data-slot=tabs]]:p-0', props.class)"><CopyButton :value="code" /><code v-bind="codeAttributes" v-html="highlighted" /></pre>
     </template>
 
-    <pre v-else :data-language="lang" :class="cn('no-scrollbar min-w-0 overflow-x-auto px-4 py-3.5 outline-none has-[[data-highlighted-line]]:px-0 has-[[data-line-numbers]]:px-0 has-[[data-slot=tabs]]:p-0', props.class)"><CopyButton :value="code" /><code v-bind="codeAttributes" v-html="highlighted" /></pre>
+    <pre v-else :data-language="lang" :class="cn('relative no-scrollbar min-w-0 overflow-x-auto px-4 py-3.5 outline-none has-[[data-highlighted-line]]:px-0 has-[[data-line-numbers]]:px-0 has-[[data-slot=tabs]]:p-0', props.class)"><CopyButton :value="code" /><code v-bind="codeAttributes" v-html="highlighted" /></pre>
   </figure>
 </template>
