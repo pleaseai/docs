@@ -16,8 +16,14 @@ export default defineNuxtConfig({
       }
   },
     eslint: {
-    config: {
-        standalone: false
+      config: {
+      standalone: false
     }
-},
+    },
+    content: {
+        database: {
+            type: 'd1',
+            bindingName: 'DB'
+        }
+    }
 })
