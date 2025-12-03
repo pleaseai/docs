@@ -1,17 +1,33 @@
 <script setup lang="ts">
 import type { NuxtLinkProps } from '#app'
+import type { ButtonVariants } from '~/components/ui/button'
 import Button from '~/components/ui/button/Button.vue'
 
-const props = defineProps<NuxtLinkProps>()
+interface Props extends NuxtLinkProps {
+  variant?: ButtonVariants['variant']
+  size?: ButtonVariants['size']
+}
+
+const props = withDefaults(defineProps<Props>(), {
+  size: 'default',
+  variant: 'default',
+})
 </script>
 
 <template>
   <Button
-    size="sm"
+    :size="size"
+    :variant="variant"
     as-child
-    class="mt-6 no-underline"
+    class="no-underline"
   >
-    <NuxtLink v-bind="props">
+    <NuxtLink
+      :to="to"
+      :href="href"
+      :target="target"
+      :rel="rel"
+      :external="external"
+    >
       <slot />
     </NuxtLink>
   </Button>

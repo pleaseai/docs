@@ -1,63 +1,76 @@
 ---
 title: PleaseAI Docs
-description: Ship fast, flexible, and SEO-optimized documentation with beautiful design out of the box. Built with shadcn-vue and Nuxt Content.
+seo:
+  title: Write beautiful docs with Markdown
+  description: Ship fast, flexible, and SEO-optimized documentation with beautiful design out of the box. Built with shadcn-vue and Nuxt Content.
 ---
 
-::div{.flex.flex-col.items-center.text-center.py-16.md:py-24}
+::PageHero
+#headline
+docs-please
 
-# Write beautiful docs with Markdown.
+#title
+Write beautiful docs with Markdown.
 
-Ship fast, flexible, and SEO-optimized documentation with beautiful design out of the box.
+#description
+Ship fast, flexible, and SEO-optimized documentation with beautiful design out of the box. Built with **shadcn-vue** and **Nuxt Content**.
 
-Built with **shadcn-vue** and **Nuxt Content**.
+#links
+  :::ButtonA{to="/docs/getting-started/introduction" size="lg"}
+  Get Started
+  :::
 
-::div{.flex.flex-wrap.justify-center.gap-4.mt-8}
-    ::ButtonA{to="/docs"}
-    Get Started
-    ::
-    
-    ::ButtonA{to="https://github.com/pleaseai/docs" target="\_blank" external}
-    GitHub
-    ::
+  :::ButtonA{to="https://github.com/pleaseai/docs" target="_blank" variant="outline" size="lg"}
+  GitHub
+  :::
 ::
 
+::PageSection{headline="Features"}
+#title
+Everything you need for documentation
+
+#description
+A complete documentation solution with modern tooling and beautiful design.
+
+  :::div{.grid.grid-cols-1.md:grid-cols-2.lg:grid-cols-3.gap-6.mt-8}
+    ::::PageCard{title="shadcn-vue Components" icon="lucide:component"}
+    #description
+    Beautiful, accessible UI components built with Reka UI primitives and styled with Tailwind CSS.
+    ::::
+
+    ::::PageCard{title="Tailwind CSS v4" icon="lucide:palette"}
+    #description
+    Modern CSS with native CSS variables, oklch colors, and lightning-fast performance.
+    ::::
+
+    ::::PageCard{title="Dark Mode" icon="lucide:moon"}
+    #description
+    Built-in dark/light mode support with smooth transitions and system preference detection.
+    ::::
+
+    ::::PageCard{title="MDC Syntax" icon="lucide:file-code"}
+    #description
+    Write pages in Markdown and extend with MDC syntax to embed Vue components seamlessly.
+    ::::
+
+    ::::PageCard{title="Full-text Search" icon="lucide:search"}
+    #description
+    Auto-generated navigation and full-text search for your documentation.
+    ::::
+
+    ::::PageCard{title="Nuxt Layer" icon="lucide:layers"}
+    #description
+    Reusable Nuxt layer architecture - extend and customize to fit your needs.
+    ::::
+  :::
 ::
 
----
+::PageSection{headline="Quick Start"}
+#title
+Get started in minutes
 
-## Features
-
-::div{.grid.grid-cols-1.md:grid-cols-2.lg:grid-cols-3.gap-6.mt-8}
-
-::FeatureCard{title="shadcn-vue Components"}
-Beautiful, accessible UI components built with Reka UI primitives and styled with Tailwind CSS.
-::
-
-::FeatureCard{title="Tailwind CSS v4"}
-Modern CSS with native CSS variables, oklch colors, and lightning-fast performance.
-::
-
-::FeatureCard{title="Dark Mode"}
-Built-in dark/light mode support with smooth transitions and system preference detection.
-::
-
-::FeatureCard{title="MDC Syntax"}
-Write pages in Markdown and extend with MDC syntax to embed Vue components seamlessly.
-::
-
-::FeatureCard{title="Full-text Search"}
-Auto-generated navigation and full-text search for your documentation.
-::
-
-::FeatureCard{title="Nuxt Layer"}
-Reusable Nuxt layer architecture - extend and customize to fit your needs.
-::
-
-::
-
----
-
-## Quick Start
+#description
+Install the layer and start writing your documentation.
 
 ```bash
 npm install docs-please
@@ -79,19 +92,21 @@ description: Getting started with your documentation
 
 Start writing your documentation in Markdown.
 ```
-
----
-
-## Documentation
-
-Explore the documentation to learn more about features and customization options.
-
-::div{.flex.flex-wrap.gap-4.mt-6}
-::ButtonA{to="/docs/getting-started/introduction"}
-Introduction
 ::
 
-::ButtonA{to="/docs/components/overview"}
-Components
-::
+::PageSection{headline="Documentation"}
+#title
+Explore the documentation
+
+#description
+Learn more about features and customization options.
+
+#links
+  :::ButtonA{to="/docs/getting-started/introduction"}
+  Introduction
+  :::
+
+  :::ButtonA{to="/docs/components/overview" variant="outline"}
+  Components
+  :::
 ::
