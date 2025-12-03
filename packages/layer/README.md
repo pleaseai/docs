@@ -5,6 +5,7 @@ A Nuxt layer for documentation sites using **shadcn-vue** instead of nuxt-ui.
 ## Overview
 
 This layer provides a complete documentation theme built with:
+
 - **shadcn-vue** - Beautiful, accessible UI components
 - **Nuxt Content** - Markdown-based content management
 - **Tailwind CSS v4** - Modern CSS with CSS variables

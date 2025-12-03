@@ -52,7 +52,7 @@ const { config } = useConfig()
 </script>
 
 <template>
-  <div class="overflow-x-auto">
+  <div class="relative overflow-x-auto">
     <Tabs v-model="config.packageManager" class="gap-0">
       <div class="border-border/50 flex items-center gap-2 border-b px-3 py-1">
         <div class="bg-foreground flex size-4 items-center justify-center rounded-[1px] opacity-70">

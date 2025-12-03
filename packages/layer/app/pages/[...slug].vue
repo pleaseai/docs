@@ -8,16 +8,15 @@ definePageMeta({
 const route = useRoute()
 
 const { data: page } = await useAsyncData(`docs-${route.path}`, () =>
-  queryCollection('docs').path(route.path).first(),
-)
+  queryCollection('docs').path(route.path).first())
 
 const { data: surround } = await useAsyncData(`surround-${route.path}`, () =>
-  queryCollectionItemSurroundings('docs', route.path),
-)
+  queryCollectionItemSurroundings('docs', route.path))
 
 // Extract TOC from page body
-const toc = computed(() => {
-  if (!page.value?.body) return []
+const _toc = computed(() => {
+  if (!page.value?.body)
+    return []
 
   const headings: { id: string, text: string, depth: number }[] = []
 
@@ -25,7 +24,7 @@ const toc = computed(() => {
     if (node.tag && node.tag.match(/^h[2-4]$/)) {
       const id = node.props?.id
       const text = extractText(node.children)
-      const depth = parseInt(node.tag.charAt(1))
+      const depth = Number.parseInt(node.tag.charAt(1))
       if (id && text) {
         headings.push({ id, text, depth })
       }
@@ -38,11 +37,14 @@ const toc = computed(() => {
   }
 
   function extractText(children: any[]): string {
-    if (!children) return ''
+    if (!children)
+      return ''
     return children
       .map((child) => {
-        if (typeof child === 'string') return child
-        if (child.children) return extractText(child.children)
+        if (typeof child === 'string')
+          return child
+        if (child.children)
+          return extractText(child.children)
         return ''
       })
       .join('')
@@ -70,7 +72,7 @@ useSeoMeta({
       :description="page.description"
     />
 
-    <Separator class="my-6" />
+    <UiSeparator class="my-6" />
 
     <div class="prose dark:prose-invert max-w-none">
       <ContentRenderer :value="page" />

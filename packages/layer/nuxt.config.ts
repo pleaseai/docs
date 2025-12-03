@@ -1,29 +1,44 @@
+import { addComponentsDir, createResolver } from '@nuxt/kit'
 import tailwindcss from '@tailwindcss/vite'
-import { createResolver } from '@nuxt/kit'
 
 const { resolve } = createResolver(import.meta.url)
 
 export default defineNuxtConfig({
+  hooks: {
+    'components:dirs': (dirs) => {
+      // Register app components from the layer directory
+      dirs.push({
+        path: resolve('./app/components/app'),
+        pathPrefix: false,
+        global: true,
+      })
+      // Register docs components from the layer directory
+      dirs.push({
+        path: resolve('./app/components/docs'),
+        pathPrefix: false,
+        global: true,
+      })
+      // Register content components from the layer directory
+      dirs.push({
+        path: resolve('./app/components/content'),
+        pathPrefix: false,
+        global: true,
+      })
+    },
+  },
   modules: [
     resolve('./modules/config'),
     resolve('./modules/css'),
+    resolve('./modules/shadcn'),
     '@nuxtjs/color-mode',
     '@nuxt/content',
     '@nuxt/image',
     'nuxt-shiki',
     'nuxt-og-image',
+    '@nuxt/eslint',
   ],
-
   devtools: { enabled: true },
-
-  components: [
-    { path: resolve('./app/components'), ignore: ['ui/**/*', 'content/**/*'] },
-    // UI components are NOT globally registered - import explicitly from ~/components/ui/*
-    { path: resolve('./app/components/content'), global: true, pathPrefix: false },
-  ],
-
   css: [resolve('./app/assets/css/main.css')],
-
   content: {
     build: {
       markdown: {
@@ -31,7 +46,6 @@ export default defineNuxtConfig({
       },
     },
   },
-
   shiki: {
     defaultTheme: {
       light: 'github-light-default',
@@ -53,17 +67,14 @@ export default defineNuxtConfig({
       'mdc',
     ],
   },
-
   colorMode: {
     classSuffix: '',
     preference: 'system',
     fallback: 'light',
   },
-
   vite: {
     plugins: [tailwindcss()],
   },
-
   nitro: {
     prerender: {
       crawlLinks: true,
@@ -71,12 +82,17 @@ export default defineNuxtConfig({
       autoSubfolderIndex: false,
     },
   },
-  compatibilityDate: '2025-01-01',
-    ogImage: {
-        fonts: [
-            'Geist:400',
-            'Geist:500',
-            'Geist:600',
-        ],
+  eslint: {
+    config: {
+      standalone: false,
     },
+  },
+  compatibilityDate: '2025-01-01',
+  ogImage: {
+    fonts: [
+      'Geist:400',
+      'Geist:500',
+      'Geist:600',
+    ],
+  },
 })
