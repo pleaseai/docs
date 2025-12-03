@@ -1,4 +1,4 @@
-import { createResolver } from '@nuxt/kit'
+import { createResolver, useNuxt } from '@nuxt/kit'
 import tailwindcss from '@tailwindcss/vite'
 
 const { resolve } = createResolver(import.meta.url)
@@ -24,6 +24,23 @@ export default defineNuxtConfig({
         pathPrefix: false,
         global: true,
       })
+    },
+    'nitro:config': (nitroConfig) => {
+      const nuxt = useNuxt()
+      const i18nOptions = nuxt.options.i18n
+
+      const routes: string[] = []
+      if (!i18nOptions) {
+        routes.push('/')
+      }
+      else {
+        routes.push(...(i18nOptions.locales?.map((locale: string | { code: string }) =>
+          typeof locale === 'string' ? `/${locale}` : `/${locale.code}`) || []))
+      }
+
+      nitroConfig.prerender = nitroConfig.prerender || {}
+      nitroConfig.prerender.routes = nitroConfig.prerender.routes || []
+      nitroConfig.prerender.routes.push(...routes)
     },
   },
   modules: [
