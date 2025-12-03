@@ -1,9 +1,17 @@
 {
+  "$schema": "./node_modules/wrangler/config-schema.json",
   "d1_databases": [
     {
       "binding": "DB",
-      "database_name": "docs-db",
-      "database_id": "local-dev-db"
+      "database_name": "docs-please",
+      "database_id": "c09358f2-eb26-4509-ac89-5e644f7ccdf8"
     }
+  ],
+  "compatibility_date": "2025-12-03",
+  "pages_build_output_dir": "dist",
+  "name": "docs-please",
+  "compatibility_flags": [
+    "nodejs_compat",
+    "no_nodejs_compat_v2"
   ]
 }
