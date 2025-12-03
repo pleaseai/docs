@@ -33,7 +33,6 @@ export default defineNuxtConfig({
     '@nuxtjs/color-mode',
     '@nuxt/content',
     '@nuxt/image',
-    'nuxt-shiki',
     'nuxt-og-image',
     '@nuxt/eslint',
   ],
@@ -42,30 +41,29 @@ export default defineNuxtConfig({
   content: {
     build: {
       markdown: {
-        highlight: false,
+        highlight: {
+          theme: {
+            light: 'github-light-default',
+            dark: 'github-dark',
+          },
+          langs: [
+            'ts',
+            'tsx',
+            'js',
+            'vue',
+            'vue-html',
+            'html',
+            'css',
+            'json',
+            'bash',
+            'shell',
+            'yaml',
+            'md',
+            'mdc',
+          ],
+        },
       },
     },
-  },
-  shiki: {
-    defaultTheme: {
-      light: 'github-light-default',
-      dark: 'github-dark',
-    },
-    bundledLangs: [
-      'ts',
-      'tsx',
-      'js',
-      'vue',
-      'vue-html',
-      'html',
-      'css',
-      'json',
-      'bash',
-      'shell',
-      'yaml',
-      'md',
-      'mdc',
-    ],
   },
   colorMode: {
     classSuffix: '',
