@@ -1,14 +1,21 @@
-# docs-please-workspace
+# docs-please
 
 A documentation system using **shadcn-vue** + **Nuxt Content**, inspired by Docus.
 
-## Packages
+## Installation
 
-### @pleaseai/docs
+```bash
+npm install docs-please
+```
 
-A Nuxt layer for documentation sites. Replaces nuxt-ui with shadcn-vue components.
+```ts
+// nuxt.config.ts
+export default defineNuxtConfig({
+  extends: ['docs-please']
+})
+```
 
-**Features:**
+## Features
 
 - shadcn-vue UI components (Button, Separator, etc.)
 - Tailwind CSS v4 with CSS variables (oklch colors)
@@ -17,13 +24,12 @@ A Nuxt layer for documentation sites. Replaces nuxt-ui with shadcn-vue component
 - Dark/Light mode
 - Mobile responsive
 
-**Location:** `packages/layer`
+## Packages
 
-## Reference Projects
-
-- `ref/docus` - Docus documentation theme (nuxt-ui based)
-- `ref/shadcn-vue` - shadcn-vue documentation site
-- `ref/fumadocs` - Fumadocs reference
+| Package | Description |
+|---------|-------------|
+| `docs-please` | Nuxt layer for documentation sites |
+| `@pleaseai/docs-site` | Example documentation site |
 
 ## Development
 
@@ -31,9 +37,15 @@ A Nuxt layer for documentation sites. Replaces nuxt-ui with shadcn-vue component
 # Install dependencies
 bun install
 
-# Development (from packages/layer)
-cd packages/layer
+# Run development server
 bun dev
+
+# Lint
+bun lint
+bun lint:fix
+
+# Type check
+bun typecheck
 ```
 
 ## Architecture
@@ -41,12 +53,12 @@ bun dev
 ```
 docs/
 ├── packages/
-│   └── layer/              # @pleaseai/docs
+│   └── layer/              # docs-please
 │       ├── app/            # Vue components, layouts, pages
 │       ├── modules/        # Nuxt modules (config, css)
 │       └── ...
-├── docs/                   # Documentation
-│   └── ref-analysis.md     # Reference analysis
+├── apps/
+│   └── docs/               # Example documentation site
 └── ref/                    # Reference projects (git submodules)
     ├── docus/
     ├── shadcn-vue/
