@@ -1,3 +1,5 @@
+name: Release Please
+
 on:
   push:
     branches:
@@ -7,8 +9,6 @@ permissions:
   contents: write
   pull-requests: write
 
-name: release-please
-
 concurrency:
   group: release-${{ github.repository }}
   cancel-in-progress: false
@@ -17,8 +17,10 @@ jobs:
   release-please:
     runs-on: ubuntu-latest
     outputs:
-      release_created: ${{ steps.release.outputs.release_created }}
-      tag_name: ${{ steps.release.outputs.tag_name }}
+      releases_created: ${{ steps.release.outputs.releases_created }}
+      paths_released: ${{ steps.release.outputs.paths_released }}
+      layer_release_created: ${{ steps.release.outputs['packages/layer--release_created'] }}
+      layer_tag_name: ${{ steps.release.outputs['packages/layer--tag_name'] }}
     steps:
       - uses: actions/create-github-app-token@v2
         id: app-token
@@ -33,35 +35,23 @@ jobs:
           config-file: release-please-config.json
           manifest-file: .release-please-manifest.json
 
-  npm-publish:
+  publish:
     needs: release-please
-    if: ${{ needs.release-please.outputs.release_created }}
+    if: ${{ needs.release-please.outputs.releases_created == 'true' }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v4
 
       - uses: oven-sh/setup-bun@v2
         with:
           bun-version: latest
 
-      - name: Cache Bun dependencies
-        uses: actions/cache@v4
-        with:
-          path: ~/.bun/install/cache
-          key: ${{ runner.os }}-bun-${{ hashFiles('**/bun.lockb') }}
-          restore-keys: |
-            ${{ runner.os }}-bun-
-
       - name: Install dependencies
-        run: bun install
+        run: bun install --frozen-lockfile
 
-      - name: Build JavaScript
-        run: bun run build
-
-      - name: Build TypeScript declarations
-        run: bun run build:types
-
-      - name: Publish to npm
-        run: bun publish
+      - name: Publish docs-please
+        if: ${{ needs.release-please.outputs.layer_release_created == 'true' }}
+        run: bun publish --access public --tag beta
+        working-directory: packages/layer
         env:
           NPM_CONFIG_TOKEN: ${{ secrets.NPM_TOKEN }}
