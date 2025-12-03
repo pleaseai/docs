@@ -4,8 +4,8 @@ import { defineComponent, h } from 'vue'
 
 interface IconProps {
   class?: string
-  style?: Record<string, any>
-  [key: string]: any
+  style?: Record<string, unknown>
+  [key: string]: unknown
 }
 
 function createIcon(svgContent: (props: IconProps) => VNode) {

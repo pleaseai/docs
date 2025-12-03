@@ -6,7 +6,11 @@ const props = defineProps<NuxtLinkProps>()
 </script>
 
 <template>
-  <Button size="sm" as-child class="mt-6 no-underline">
+  <Button
+    size="sm"
+    as-child
+    class="mt-6 no-underline"
+  >
     <NuxtLink v-bind="props">
       <slot />
     </NuxtLink>

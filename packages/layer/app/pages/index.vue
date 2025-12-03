@@ -9,8 +9,15 @@ const { data: page } = await useAsyncData('landing', () =>
 
 <template>
   <div class="container py-12">
-    <ContentRenderer v-if="page" :value="page" class="prose dark:prose-invert max-w-none" />
-    <div v-else class="text-center">
+    <ContentRenderer
+      v-if="page"
+      :value="page"
+      class="prose dark:prose-invert max-w-none"
+    />
+    <div
+      v-else
+      class="text-center"
+    >
       <h1 class="text-4xl font-bold">
         Welcome
       </h1>

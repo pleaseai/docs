@@ -18,7 +18,10 @@ const Component = defineAsyncComponent({
 </script>
 
 <template>
-  <p v-if="!Component" class="text-muted-foreground text-sm">
+  <p
+    v-if="!Component"
+    class="text-muted-foreground text-sm"
+  >
     Component
     <code class="bg-muted relative rounded px-[0.3rem] py-[0.2rem] font-mono text-sm">
       {{ name }}
@@ -26,7 +29,10 @@ const Component = defineAsyncComponent({
     not found in registry.
   </p>
 
-  <div v-else-if="type === 'block'" class="relative aspect-[4/2.5] w-full overflow-hidden rounded-md border md:-mx-1">
+  <div
+    v-else-if="type === 'block'"
+    class="relative aspect-[4/2.5] w-full overflow-hidden rounded-md border md:-mx-1"
+  >
     <img
       :src="`/r/styles/new-york-v4/${name}-light.png`"
       :alt="name"
@@ -42,7 +48,10 @@ const Component = defineAsyncComponent({
       class="bg-background absolute top-0 left-0 z-20 hidden w-[970px] max-w-none sm:w-[1280px] md:hidden dark:block md:dark:hidden"
     >
     <div class="bg-background absolute inset-0 hidden w-[1600px] md:block">
-      <iframe :src="`/view/${name}`" class="size-full" />
+      <iframe
+        :src="`/view/${name}`"
+        class="size-full"
+      />
     </div>
   </div>
 
@@ -53,6 +62,10 @@ const Component = defineAsyncComponent({
     :hide-code
     :component="Component"
   >
-    <ComponentSource v-if="!hideCode" :name :collapsible="false" />
+    <ComponentSource
+      v-if="!hideCode"
+      :name
+      :collapsible="false"
+    />
   </ComponentPreviewTabs>
 </template>

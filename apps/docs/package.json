@@ -8,9 +8,7 @@
     "build": "nuxt build",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare",
-    "lint": "eslint .",
-    "lint:fix": "eslint . --fix"
+    "postinstall": "nuxt prepare"
   },
   "dependencies": {
     "@pleaseai/docs": "workspace:*",
@@ -19,10 +17,7 @@
     "zod-to-json-schema": "^3.25.0"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^6.2.0",
     "@tailwindcss/vite": "^4.1.17",
-    "eslint": "^9.38.0",
-    "eslint-plugin-format": "^1.0.2",
     "nuxt": "^4.2.1"
   }
 }

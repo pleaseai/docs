@@ -17,7 +17,10 @@ const title = computed(() => appConfig.docs?.title || 'Docs')
     <div class="container flex h-14 items-center">
       <!-- Logo -->
       <div class="mr-4 flex">
-        <NuxtLink to="/" class="flex items-center space-x-2">
+        <NuxtLink
+          to="/"
+          class="flex items-center space-x-2"
+        >
           <span class="font-bold">{{ title }}</span>
         </NuxtLink>
       </div>
@@ -39,8 +42,14 @@ const title = computed(() => appConfig.docs?.title || 'Docs')
           size="icon"
           @click="toggleColorMode"
         >
-          <Sun v-if="colorMode.value === 'dark'" class="size-5" />
-          <Moon v-else class="size-5" />
+          <Sun
+            v-if="colorMode.value === 'dark'"
+            class="size-5"
+          />
+          <Moon
+            v-else
+            class="size-5"
+          />
           <span class="sr-only">Toggle theme</span>
         </Button>
       </div>

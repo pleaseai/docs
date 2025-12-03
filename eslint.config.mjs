@@ -1,7 +1,20 @@
-import antfu from '@antfu/eslint-config'
+import { createConfigForNuxt } from '@nuxt/eslint-config/flat'
 
-export default antfu({
-  formatters: true,
-  vue: true,
-  type: 'lib',
-})
+export default createConfigForNuxt({
+  dirs: {
+    src: [
+      './packages/layer',
+      './apps/docs',
+    ],
+  },
+  features: {
+    tooling: true,
+    stylistic: true,
+  },
+}).append(
+  {
+    rules: {
+      'vue/multi-word-component-names': 'off',
+    },
+  },
+)

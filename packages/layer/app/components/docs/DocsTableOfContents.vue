@@ -36,7 +36,10 @@ onMounted(() => {
 </script>
 
 <template>
-  <nav v-if="toc?.length" class="sticky top-20 -ml-2 h-[calc(100vh-5rem)] overflow-y-auto pb-10">
+  <nav
+    v-if="toc?.length"
+    class="sticky top-20 -ml-2 h-[calc(100vh-5rem)] overflow-y-auto pb-10"
+  >
     <p class="mb-4 text-sm font-semibold">
       On this page
     </p>

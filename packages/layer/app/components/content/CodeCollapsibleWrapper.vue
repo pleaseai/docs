@@ -30,7 +30,10 @@ const open = ref(false)
         >
           {{ open ? "Collapse" : "Expand" }}
         </Button>
-        <Separator orientation="vertical" class="mx-1.5 !h-4" />
+        <Separator
+          orientation="vertical"
+          class="mx-1.5 !h-4"
+        />
       </div>
     </CollapsibleTrigger>
 

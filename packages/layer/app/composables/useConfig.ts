@@ -1,4 +1,4 @@
-import { createSharedComposable, isClient, watchImmediate } from '@vueuse/core'
+import { createSharedComposable } from '@vueuse/core'
 
 const COOKIE_NAME = 'docs_config'
 export type PackageManager = 'pnpm' | 'npm' | 'yarn' | 'bun'

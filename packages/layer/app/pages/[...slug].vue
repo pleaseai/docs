@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { Separator } from '~/components/ui/separator'
-
 definePageMeta({
   layout: 'docs',
 })
@@ -20,6 +18,7 @@ const _toc = computed(() => {
 
   const headings: { id: string, text: string, depth: number }[] = []
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   function extractHeadings(node: any) {
     if (node.tag && node.tag.match(/^h[2-4]$/)) {
       const id = node.props?.id
@@ -36,6 +35,7 @@ const _toc = computed(() => {
     }
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   function extractText(children: any[]): string {
     if (!children)
       return ''
@@ -83,7 +83,10 @@ useSeoMeta({
       :next="surround?.[1]"
     />
   </div>
-  <div v-else class="py-12 text-center">
+  <div
+    v-else
+    class="py-12 text-center"
+  >
     <h1 class="text-2xl font-bold">
       Page not found
     </h1>

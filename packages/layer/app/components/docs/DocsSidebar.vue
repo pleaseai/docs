@@ -12,16 +12,28 @@ function isActive(path: string) {
 <template>
   <nav class="sticky top-20 -ml-2 h-[calc(100vh-5rem)] overflow-y-auto pb-10 pr-4">
     <div class="space-y-4">
-      <template v-for="section in navigation" :key="section.path">
+      <template
+        v-for="section in navigation"
+        :key="section.path"
+      >
         <!-- Section with children (group) -->
-        <div v-if="section.children?.length" class="space-y-2">
+        <div
+          v-if="section.children?.length"
+          class="space-y-2"
+        >
           <h4 class="mb-1 rounded-md px-2 py-1 text-sm font-semibold">
             {{ section.title }}
           </h4>
           <div class="space-y-1">
-            <template v-for="item in section.children" :key="item.path">
+            <template
+              v-for="item in section.children"
+              :key="item.path"
+            >
               <!-- Nested group -->
-              <div v-if="item.children?.length" class="space-y-1">
+              <div
+                v-if="item.children?.length"
+                class="space-y-1"
+              >
                 <NuxtLink
                   :to="item.path"
                   class="flex w-full items-center rounded-md px-2 py-1.5 text-sm hover:bg-accent hover:text-accent-foreground"

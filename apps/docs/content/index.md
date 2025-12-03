@@ -12,13 +12,13 @@ Ship fast, flexible, and SEO-optimized documentation with beautiful design out o
 Built with **shadcn-vue** and **Nuxt Content**.
 
 ::div{.flex.flex-wrap.justify-center.gap-4.mt-8}
-::ButtonA{to="/docs"}
-Get Started
-::
-
-::ButtonA{to="https://github.com/pleaseai/docs" target="\_blank" external}
-GitHub
-::
+    ::ButtonA{to="/docs"}
+    Get Started
+    ::
+    
+    ::ButtonA{to="https://github.com/pleaseai/docs" target="\_blank" external}
+    GitHub
+    ::
 ::
 
 ::

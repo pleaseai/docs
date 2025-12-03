@@ -27,7 +27,13 @@ const { copy, copied } = useClipboard({ source: value })
     @click="copy()"
   >
     <span class="sr-only">Copy</span>
-    <Check v-if="copied" class="size-4" />
-    <Copy v-else class="size-4" />
+    <Check
+      v-if="copied"
+      class="size-4"
+    />
+    <Copy
+      v-else
+      class="size-4"
+    />
   </button>
 </template>
