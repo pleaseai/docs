@@ -54,21 +54,66 @@ Ship fast, flexible, and SEO-optimized documentation with beautiful design out o
     Beautiful, accessible UI components built with Reka UI primitives. Minimal by design but highly customizable for your documentation needs.
     ::::
 
-    ::::u-page-card{class="col-span-1 lg:col-span-2"}
+    ::::u-page-card
+    ---
+    spotlight: true
+    class: col-span-1 lg:col-span-2
+    ---
+      :::::tabs{default-value="preview"}
+        ::::::tabs-list
+          :::::::tabs-trigger{value="preview"}
+          Preview
+          :::::::
+          :::::::tabs-trigger{value="code"}
+          Code
+          :::::::
+        ::::::
+        ::::::tabs-content{value="preview"}
+          :::::::div{class="flex flex-col gap-4"}
+            ::::::::note{class="my-0"}
+            Here's some additional information for you.
+            ::::::::
+
+            ::::::::tip{class="my-0"}
+            Here's a helpful suggestion.
+            ::::::::
+
+            ::::::::warning{class="my-0"}
+            Be careful with this action as it might have unexpected results.
+            ::::::::
+
+            ::::::::caution{class="my-0"}
+            This action cannot be undone.
+            ::::::::
+          :::::::
+        ::::::
+
+        ::::::tabs-content{value="code" class="text-sm overflow-x-auto"}
+        ```mdc
+        ::note
+        Here's some additional information.
+        ::
+
+        ::tip
+        Here's a helpful suggestion.
+        ::
+
+        ::warning
+        Be careful with this action.
+        ::
+
+        ::caution
+        This action cannot be undone.
+        ::
+        ```
+        ::::::
+      :::::
+
     #title
     Enhanced Markdown syntax by [Nuxt Content]{.text-primary}
 
     #description
     Write your pages in Markdown and extend with MDC syntax to embed Vue components seamlessly. Structure, routing, and rendering are handled for you.
-
-    #body
-      :::::callout{title="Note" variant="default" class="mt-4"}
-      Here's some additional information for you.
-      :::::
-
-      :::::callout{title="Tip" variant="default" class="mt-2"}
-      Here's a helpful suggestion.
-      :::::
     ::::
 
     ::::u-page-card{class="col-span-1"}
