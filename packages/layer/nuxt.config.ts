@@ -27,7 +27,8 @@ export default defineNuxtConfig({
     },
     'nitro:config': (nitroConfig) => {
       const nuxt = useNuxt()
-      const i18nOptions = nuxt.options.i18n
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const i18nOptions = (nuxt.options as any).i18n
 
       const routes: string[] = []
       if (!i18nOptions) {
