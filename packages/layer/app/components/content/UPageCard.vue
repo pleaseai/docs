@@ -10,6 +10,7 @@ const props = defineProps<{
   to?: NuxtLinkProps['to']
   target?: string
   orientation?: 'vertical' | 'horizontal'
+  spotlight?: boolean
   class?: HTMLAttributes['class']
 }>()
 
@@ -21,6 +22,7 @@ const isLink = computed(() => !!props.to)
     :class="[
       'transition-colors',
       isLink && 'hover:border-primary/50 cursor-pointer',
+      props.spotlight && 'group',
       props.class,
     ]"
   >
@@ -33,16 +35,6 @@ const isLink = computed(() => !!props.to)
         props.orientation === 'horizontal' && 'flex flex-col sm:flex-row',
       ]"
     >
-      <!-- Default slot for media/illustration -->
-      <div
-        v-if="$slots.default"
-        :class="[
-          props.orientation === 'horizontal' ? 'sm:w-1/3 shrink-0' : '',
-        ]"
-      >
-        <slot />
-      </div>
-
       <div :class="props.orientation === 'horizontal' && 'flex-1'">
         <CardHeader v-if="$slots.title || $slots.description || props.title || props.description || props.icon">
           <!-- Icon -->
@@ -74,6 +66,16 @@ const isLink = computed(() => !!props.to)
         <CardContent v-if="$slots.body">
           <slot name="body" />
         </CardContent>
+      </div>
+
+      <!-- Default slot for media/illustration (below content) -->
+      <div
+        v-if="$slots.default"
+        :class="[
+          props.orientation === 'horizontal' ? 'sm:w-1/3 shrink-0' : '',
+        ]"
+      >
+        <slot />
       </div>
     </component>
   </Card>
