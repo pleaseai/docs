@@ -5,25 +5,25 @@ definePageMeta({
 
 const { data: page } = await useAsyncData('landing', () =>
   queryCollection('landing').first())
+
+if (!page.value) {
+  throw createError({ statusCode: 404, statusMessage: 'Page not found', fatal: true })
+}
+
+const title = page.value.seo?.title || page.value.title
+const description = page.value.seo?.description || page.value.description
+
+useSeoMeta({
+  title,
+  ogTitle: title,
+  description,
+  ogDescription: description,
+})
 </script>
 
 <template>
-  <div class="container py-12">
-    <ContentRenderer
-      v-if="page"
-      :value="page"
-      class="prose dark:prose-invert max-w-none"
-    />
-    <div
-      v-else
-      class="text-center"
-    >
-      <h1 class="text-4xl font-bold">
-        Welcome
-      </h1>
-      <p class="mt-4 text-lg text-muted-foreground">
-        Create an <code>index.md</code> file in your <code>content</code> folder to customize this page.
-      </p>
-    </div>
-  </div>
+  <ContentRenderer
+    v-if="page"
+    :value="page"
+  />
 </template>

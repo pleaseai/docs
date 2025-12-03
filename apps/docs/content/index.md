@@ -1,97 +1,156 @@
 ---
 title: PleaseAI Docs
-description: Ship fast, flexible, and SEO-optimized documentation with beautiful design out of the box. Built with shadcn-vue and Nuxt Content.
+seo:
+  title: Write beautiful docs with Markdown
+  description: Ship fast, flexible, and SEO-optimized documentation with beautiful design out of the box. Built with shadcn-vue and Nuxt Content.
 ---
 
-::div{.flex.flex-col.items-center.text-center.py-16.md:py-24}
+::u-page-hero
+#headline
+  :::u-button{to="https://github.com/pleaseai/docs/releases" target="_blank" variant="outline" size="sm"}
+  docs-please v1.0 →
+  :::
 
-# Write beautiful docs with Markdown.
+#title
+Write beautiful docs with Markdown.
 
-Ship fast, flexible, and SEO-optimized documentation with beautiful design out of the box.
+#description
+Ship fast, flexible, and SEO-optimized documentation with beautiful design out of the box. Built with **shadcn-vue** and **Nuxt Content**.
 
-Built with **shadcn-vue** and **Nuxt Content**.
+#links
+  :::u-button{to="/docs/getting-started/introduction" size="lg"}
+  Get Started →
+  :::
 
-::div{.flex.flex-wrap.justify-center.gap-4.mt-8}
-    ::ButtonA{to="/docs"}
-    Get Started
-    ::
-    
-    ::ButtonA{to="https://github.com/pleaseai/docs" target="\_blank" external}
-    GitHub
-    ::
+  :::u-button{to="https://github.com/pleaseai/docs" target="_blank" variant="outline" size="lg"}
+  Star on GitHub
+  :::
 ::
 
-::
+::u-page-section
+  :::u-page-grid{class="lg:grid-cols-2"}
+    ::::u-page-card
+    ---
+    spotlight: true
+    class: col-span-1
+    target: _blank
+    to: https://nuxt.com
+    ---
+      :::::floating-nuxt
+      :::::
 
----
+    #title
+    Built with [Nuxt 4]{.text-primary}
 
-## Features
+    #description
+    Optimized by the most famous Vue framework. Everything you need to build fast, performant, and SEO-friendly documentation websites.
+    ::::
 
-::div{.grid.grid-cols-1.md:grid-cols-2.lg:grid-cols-3.gap-6.mt-8}
+    ::::u-page-card{to="https://ui.shadcn.com" target="_blank" class="col-span-1"}
+    #title
+    Powered by [shadcn-vue]{.text-primary}
 
-::FeatureCard{title="shadcn-vue Components"}
-Beautiful, accessible UI components built with Reka UI primitives and styled with Tailwind CSS.
-::
+    #description
+    Beautiful, accessible UI components built with Reka UI primitives. Minimal by design but highly customizable for your documentation needs.
+    ::::
 
-::FeatureCard{title="Tailwind CSS v4"}
-Modern CSS with native CSS variables, oklch colors, and lightning-fast performance.
-::
+    ::::u-page-card
+    ---
+    spotlight: true
+    class: col-span-1 lg:col-span-2
+    ---
+      :::::tabs{default-value="preview"}
+        ::::::tabs-list
+          :::::::tabs-trigger{value="preview"}
+          Preview
+          :::::::
+          :::::::tabs-trigger{value="code"}
+          Code
+          :::::::
+        ::::::
+        ::::::tabs-content{value="preview"}
+          :::::::div{class="flex flex-col gap-4"}
+            ::::::::note{class="my-0"}
+            Here's some additional information for you.
+            ::::::::
 
-::FeatureCard{title="Dark Mode"}
-Built-in dark/light mode support with smooth transitions and system preference detection.
-::
+            ::::::::tip{class="my-0"}
+            Here's a helpful suggestion.
+            ::::::::
 
-::FeatureCard{title="MDC Syntax"}
-Write pages in Markdown and extend with MDC syntax to embed Vue components seamlessly.
-::
+            ::::::::warning{class="my-0"}
+            Be careful with this action as it might have unexpected results.
+            ::::::::
 
-::FeatureCard{title="Full-text Search"}
-Auto-generated navigation and full-text search for your documentation.
-::
+            ::::::::caution{class="my-0"}
+            This action cannot be undone.
+            ::::::::
+          :::::::
+        ::::::
 
-::FeatureCard{title="Nuxt Layer"}
-Reusable Nuxt layer architecture - extend and customize to fit your needs.
-::
+        ::::::tabs-content{value="code" class="text-sm overflow-x-auto"}
+        ```mdc
+        ::note
+        Here's some additional information.
+        ::
 
-::
+        ::tip
+        Here's a helpful suggestion.
+        ::
 
----
+        ::warning
+        Be careful with this action.
+        ::
 
-## Quick Start
+        ::caution
+        This action cannot be undone.
+        ::
+        ```
+        ::::::
+      :::::
 
-```bash
-npm install docs-please
-```
+    #title
+    Enhanced Markdown syntax by [Nuxt Content]{.text-primary}
 
-```ts [nuxt.config.ts]
-export default defineNuxtConfig({
-  extends: ['docs-please']
-})
-```
+    #description
+    Write your pages in Markdown and extend with MDC syntax to embed Vue components seamlessly. Structure, routing, and rendering are handled for you.
+    ::::
 
-```md [content/docs/index.md]
----
-title: Introduction
-description: Getting started with your documentation
----
+    ::::u-page-card{class="col-span-1"}
+    #title
+    Customize with [App Config]{.text-primary}
 
-# Welcome
+    #description
+    Update colors, social links, header logos and component styles globally using `app.config.ts`, no direct code modifications required.
 
-Start writing your documentation in Markdown.
-```
+    #body
+    ```ts [app.config.ts]
+    export default defineAppConfig({
+      docs: {
+        title: 'My Docs',
+        github: {
+          owner: 'myorg',
+          name: 'my-docs'
+        }
+      }
+    })
+    ```
+    ::::
 
----
+    ::::u-page-card{class="col-span-1"}
+    #title
+    [Dark Mode]{.text-primary} built-in
 
-## Documentation
+    #description
+    Built-in dark/light mode support with smooth transitions and system preference detection. No configuration required.
+    ::::
 
-Explore the documentation to learn more about features and customization options.
+    ::::u-page-card{class="col-span-1 lg:col-span-2"}
+    #title
+    Built-in navigation and [full-text search]{.text-primary}
 
-::div{.flex.flex-wrap.gap-4.mt-6}
-::ButtonA{to="/docs/getting-started/introduction"}
-Introduction
-::
-
-::ButtonA{to="/docs/components/overview"}
-Components
-::
+    #description
+    Only focus on ordering your content. Auto-generated side navigation and full-text search are built-in to help users find what they need.
+    ::::
+  :::
 ::
