@@ -12,13 +12,13 @@ Ship fast, flexible, and SEO-optimized documentation with beautiful design out o
 Built with **shadcn-vue** and **Nuxt Content**.
 
 ::div{.flex.flex-wrap.justify-center.gap-4.mt-8}
-  ::ButtonA{to="/docs"}
-  Get Started
-  ::
+::ButtonA{to="/docs"}
+Get Started
+::
 
-  ::ButtonA{to="https://github.com/pleaseai/docs" target="_blank" external}
-  GitHub
-  ::
+::ButtonA{to="https://github.com/pleaseai/docs" target="\_blank" external}
+GitHub
+::
 ::
 
 ::
@@ -87,11 +87,11 @@ Start writing your documentation in Markdown.
 Explore the documentation to learn more about features and customization options.
 
 ::div{.flex.flex-wrap.gap-4.mt-6}
-  ::ButtonA{to="/docs/getting-started/introduction"}
-  Introduction
-  ::
+::ButtonA{to="/docs/getting-started/introduction"}
+Introduction
+::
 
-  ::ButtonA{to="/docs/components/overview"}
-  Components
-  ::
+::ButtonA{to="/docs/components/overview"}
+Components
+::
 ::

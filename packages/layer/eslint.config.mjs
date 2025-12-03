@@ -5,7 +5,8 @@ import withNuxt from './.nuxt/eslint.config.mjs'
 export default withNuxt(
   antfu({
     type: 'lib',
+    vue: true,
   }, {
-    ignores: ['**/dist/**', '**/.nuxt/**', '**/node_modules/**', 'app/components/ui/**' ],
+    ignores: ['**/dist/**', '**/.nuxt/**', '**/node_modules/**'],
   }),
 )

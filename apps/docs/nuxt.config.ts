@@ -1,4 +1,3 @@
-import tailwindcss from '@tailwindcss/vite'
 import { defineNuxtConfig } from 'nuxt/config'
 
 export default defineNuxtConfig({
@@ -8,22 +7,25 @@ export default defineNuxtConfig({
     url: 'https://docs.please.ai',
   },
   compatibilityDate: '2025-12-03',
-  nitro: {
-      preset: "cloudflare_pages",
-      cloudflare: {
-          deployConfig: true,
-          nodeCompat: true
-      }
+  routeRules: {
+    '/': { prerender: true },
   },
-    eslint: {
-      config: {
-      standalone: false
-    }
+  nitro: {
+    preset: 'cloudflare_pages',
+    cloudflare: {
+      deployConfig: true,
+      nodeCompat: true,
     },
-    content: {
-        database: {
-            type: 'd1',
-            bindingName: 'DB'
-        }
-    }
+  },
+  eslint: {
+    config: {
+      standalone: false,
+    },
+  },
+  content: {
+    database: {
+      type: 'd1',
+      bindingName: 'DB',
+    },
+  },
 })

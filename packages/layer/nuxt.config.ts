@@ -1,4 +1,4 @@
-import { addComponentsDir, createResolver } from '@nuxt/kit'
+import { createResolver } from '@nuxt/kit'
 import tailwindcss from '@tailwindcss/vite'
 
 const { resolve } = createResolver(import.meta.url)
