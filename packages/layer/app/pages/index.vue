@@ -4,7 +4,7 @@ definePageMeta({
 })
 
 const { data: page } = await useAsyncData('landing', () =>
-  queryCollection('landing').path('/').first())
+  queryCollection('landing').first())
 </script>
 
 <template>
