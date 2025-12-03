@@ -1,6 +1,6 @@
 # PleaseAI Docs
 
-Documentation site using `@pleaseai/docs`.
+Documentation site using `docs-please`.
 
 ## Development
 

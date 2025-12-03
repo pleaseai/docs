@@ -60,12 +60,12 @@ Reusable Nuxt layer architecture - extend and customize to fit your needs.
 ## Quick Start
 
 ```bash
-npm install @pleaseai/docs
+npm install docs-please
 ```
 
 ```ts [nuxt.config.ts]
 export default defineNuxtConfig({
-  extends: ['@pleaseai/docs']
+  extends: ['docs-please']
 })
 ```
 

@@ -1,18 +1,26 @@
 {
   "$schema": "https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json",
   "release-type": "node",
+  "bump-minor-pre-major": true,
+  "bump-patch-for-minor-pre-major": true,
   "packages": {
     "packages/layer": {
       "release-type": "node",
-      "package-name": "@pleaseai/docs",
-      "component": "docs-please"
+      "package-name": "docs-please",
+      "component": "docs-please",
+      "prerelease": true,
+      "prerelease-type": "beta"
     },
     "apps/docs": {
       "release-type": "node",
-      "package-name": "@pleaseai/docs-docs",
-      "component": "docs-please-docs"
+      "package-name": "@pleaseai/docs-site",
+      "component": "docs",
+      "prerelease": true,
+      "prerelease-type": "beta"
     }
   },
+  "plugins": ["node-workspace"],
+  "include-v-in-tag": true,
   "changelog-sections": [
     { "type": "feat", "section": "Features" },
     { "type": "fix", "section": "Bug Fixes" },

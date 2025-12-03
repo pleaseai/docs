@@ -11,7 +11,7 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
-    "@pleaseai/docs": "workspace:*",
+    "docs-please": "workspace:*",
     "vite-plugin-wasm": "^3.5.0",
     "zod": "^3.25.76",
     "zod-to-json-schema": "^3.25.0"

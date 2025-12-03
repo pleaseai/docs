@@ -1,7 +1,7 @@
 import { defineNuxtConfig } from 'nuxt/config'
 
 export default defineNuxtConfig({
-  extends: ['@pleaseai/docs'],
+  extends: ['docs-please'],
   site: {
     name: 'DOCS PLEASE Docs',
     url: 'https://docs.please.ai',
