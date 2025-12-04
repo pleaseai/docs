@@ -8,6 +8,7 @@ on:
 permissions:
   contents: write
   pull-requests: write
+  id-token: write  # Required for OIDC
 
 concurrency:
   group: release-${{ github.repository }}
@@ -21,6 +22,7 @@ jobs:
       paths_released: ${{ steps.release.outputs.paths_released }}
       layer_release_created: ${{ steps.release.outputs['packages/layer--release_created'] }}
       layer_tag_name: ${{ steps.release.outputs['packages/layer--tag_name'] }}
+      layer_version: ${{ steps.release.outputs['packages/layer--version'] }}
     steps:
       - uses: actions/create-github-app-token@v2
         id: app-token
@@ -51,7 +53,9 @@ jobs:
 
       - name: Publish docs-please
         if: ${{ needs.release-please.outputs.layer_release_created == 'true' }}
-        run: bun publish --access public --tag beta
+        run: |
+          bun pm pack
+          bunx npm publish ./docs-please-${{ needs.release-please.outputs.layer_version }}.tgz --provenance
         working-directory: packages/layer
         env:
           NPM_CONFIG_TOKEN: ${{ secrets.NPM_TOKEN }}
