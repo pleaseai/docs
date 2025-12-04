@@ -24,23 +24,25 @@ const src = computed(() => {
 
 <template>
   <ClientOnly>
-    <img
+    <NuxtImg
       :src="src"
       :alt="alt"
       :width="width"
       :height="height"
       :class="props.class"
       :loading="loading"
-    >
+      :format="format"
+    />
     <template #fallback>
-      <img
+      <NuxtImg
         :src="light"
         :alt="alt"
         :width="width"
         :height="height"
         :class="props.class"
         :loading="loading"
-      >
+        :format="format"
+      />
     </template>
   </ClientOnly>
 </template>

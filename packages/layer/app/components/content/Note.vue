@@ -9,8 +9,15 @@ defineProps<{
 </script>
 
 <template>
-  <Callout type="note" :title :class>
-    <template v-if="$slots.title" #title>
+  <Callout
+    type="note"
+    :title
+    :class
+  >
+    <template
+      v-if="$slots.title"
+      #title
+    >
       <slot name="title" />
     </template>
     <slot />
