@@ -39,6 +39,7 @@ cd packages/layer && bun typecheck
 - **`packages/layer`** (`@pleaseai/docs`) - The main Nuxt layer package
 - **`apps/docs`** (`@pleaseai/docs-site`) - Example documentation site using the layer
 - **`ref/`** - Git submodules containing reference projects (docus, shadcn-vue, fumadocs)
+- **`docs/ref-analysis.md`** - Analysis summary of Docus and shadcn-vue reference projects
 
 ### Layer Package (`packages/layer`)
 
