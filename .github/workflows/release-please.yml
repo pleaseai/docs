@@ -57,5 +57,4 @@ jobs:
           bun pm pack
           bunx npm publish ./docs-please-${{ needs.release-please.outputs.layer_version }}.tgz --provenance
         working-directory: packages/layer
-        env:
-          NPM_CONFIG_TOKEN: ${{ secrets.NPM_TOKEN }}
+
