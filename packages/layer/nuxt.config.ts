@@ -51,13 +51,16 @@ export default defineNuxtConfig({
   mdc: {
     components: {
       map: {
+        'browser-frame': 'BrowserFrame',
         'callout': 'Callout',
         'caution': 'Caution',
+        'icon': 'ProseIcon',
         'note': 'Note',
         'tip': 'Tip',
         'warning': 'Warning',
         'tabs': 'Tabs',
         'tabs-item': 'TabsItem',
+        'u-color-mode-image': 'UColorModeImage',
       },
     },
   },

@@ -1,7 +1,6 @@
 <script setup lang="ts">
-import type { HTMLAttributes } from 'vue'
+import type { HTMLAttributes, Component } from 'vue'
 import type { AlertVariants } from '~/components/ui/alert'
-import type { Component } from 'vue'
 import {
   CircleAlertIcon,
   CircleCheckIcon,
@@ -63,9 +62,14 @@ const resolvedIcon = computed(() => {
     )"
     :variant="resolvedVariant"
   >
-    <component :is="resolvedIcon" v-if="resolvedIcon" />
+    <component
+      :is="resolvedIcon"
+      v-if="resolvedIcon"
+    />
     <AlertTitle v-if="title || $slots.title">
-      <slot name="title">{{ title }}</slot>
+      <slot name="title">
+        {{ title }}
+      </slot>
     </AlertTitle>
     <AlertDescription>
       <slot name="description">

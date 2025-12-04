@@ -129,20 +129,86 @@ Ship fast, flexible, and SEO-optimized documentation with beautiful design out o
     ```
     ::::
 
-    ::::u-page-card{class="col-span-1"}
+    ::::u-page-card
+    ---
+    spotlight: true
+    class: col-span-1 min-h-[450px]
+    ---
+      :::::color-mode-switch
+      :::::
+
     #title
-    [Dark Mode]{.text-primary} built-in
+    [Color Mode]{.text-primary} built-in
 
     #description
-    Built-in dark/light mode support with smooth transitions and system preference detection. No configuration required.
+    Built-in dark mode provided, no configuration required.
     ::::
 
-    ::::u-page-card{class="col-span-1 lg:col-span-2"}
+    ::::u-page-card
+    ---
+    spotlight: true
+    class: col-span-2
+    ---
+      :::::u-color-mode-image
+      ---
+      height: 554
+      width: 859
+      alt: Built-in navigation and full-text search
+      class: rounded-lg
+      dark: /landing/dark/command-menu.png
+      format: webp
+      light: /landing/light/command-menu.png
+      loading: lazy
+      ---
+      :::::
+
     #title
     Built-in navigation and [full-text search]{.text-primary}
 
     #description
     Only focus on ordering your content. Auto-generated side navigation and full-text search are built-in to help users find what they need.
+    ::::
+
+    ::::u-page-card
+    ---
+    spotlight: true
+    class: col-span-2
+    target: _blank
+    ---
+      :::::browser-frame
+      :video{class="rounded-md" controls loop playsinline src="https://res.cloudinary.com/nuxt/video/upload/v1747230893/studio/wzt9zfmdvk7hgmdx3cnt.mp4"}
+      :::::
+
+    #title
+    Collaborate on [Nuxt Studio]{.text-primary}
+
+    #description
+    Write and manage your content visually, with zero Markdown knowledge required. Let your non technical colleagues collaborate on the documentation and integrate Vue components without code skills.
+    ::::
+
+    ::::u-page-card
+    ---
+    spotlight: true
+    class: col-span-2 lg:col-span-1
+    target: _blank
+    to: https://image.nuxt.com/
+    ---
+      :::::div{class="flex-1 flex items-center justify-center"}
+        ::::::u-color-mode-image
+        ---
+        alt: Nuxt Image visual
+        class: w-[30%] lg:w-[70%] my-12 lg:my-0
+        dark: /landing/dark/nuxt-image.svg
+        light: /landing/light/nuxt-image.svg
+        ---
+        ::::::
+      :::::
+
+    #title
+    [Nuxt Image]{.text-primary} optimization
+
+    #description
+    Automatically converts Markdown images to use `<NuxtImg>` for optimized loading.
     ::::
   :::
 ::
