@@ -1,6 +1,7 @@
 {
   "name": "@pleaseai/docs-site",
   "type": "module",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "dev": "nuxt dev",
