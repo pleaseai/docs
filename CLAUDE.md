@@ -89,6 +89,11 @@ export default defineNuxtConfig({
 })
 ```
 
+## References
+
+- [Nuxt Content Markdown Documentation](https://content.nuxt.com/raw/docs/files/markdown.md)
+- [MDC Prose Components](https://github.com/nuxt-content/mdc/tree/main/src/runtime/components/prose)
+
 ## ESLint
 
 Uses `@antfu/eslint-config` with Vue and formatters enabled.

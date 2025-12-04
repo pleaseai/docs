@@ -37,7 +37,7 @@ const isLink = computed(() => !!props.to)
     >
       <div :class="props.orientation === 'horizontal' && 'flex-1'">
         <CardHeader v-if="$slots.title || $slots.description || props.title || props.description || props.icon">
-          <!-- Icon -->
+          <!-- Icon (decorative - title/description provide meaning) -->
           <div
             v-if="props.icon"
             class="mb-2"
@@ -45,6 +45,7 @@ const isLink = computed(() => !!props.to)
             <Icon
               :name="props.icon"
               class="size-8 text-primary"
+              aria-hidden="true"
             />
           </div>
 
@@ -69,14 +70,14 @@ const isLink = computed(() => !!props.to)
       </div>
 
       <!-- Default slot for media/illustration (below content) -->
-      <div
+      <CardContent
         v-if="$slots.default"
         :class="[
           props.orientation === 'horizontal' ? 'sm:w-1/3 shrink-0' : '',
         ]"
       >
         <slot />
-      </div>
+      </CardContent>
     </component>
   </Card>
 </template>

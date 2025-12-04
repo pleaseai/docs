@@ -152,7 +152,175 @@ Override markdown rendering:
 
 ---
 
-## 3. Component Mapping
+## 3. Nuxt Content Analysis (`ref/content`)
+
+Core content module for Nuxt - file-based CMS with markdown support.
+
+### Architecture
+
+```
+src/
+├── runtime/
+│   ├── components/       # ContentRenderer, ContentPreviewMode
+│   └── utils/            # Query helpers, transformers
+├── utils/
+│   └── content/
+│       └── transformers/ # CSV, YAML, JSON parsers
+└── module.ts             # Module setup
+```
+
+### Key Features
+
+- File-based content management (Markdown, YAML, JSON, CSV)
+- SQLite-powered content database
+- Collection-based content organization
+- Query builder API
+
+---
+
+## 4. MDC Analysis (`ref/mdc`)
+
+Markdown Components parser - enables Vue components in Markdown.
+
+### Architecture
+
+```
+src/runtime/
+├── components/
+│   └── prose/           # Prose components
+│       ├── ProseA.vue
+│       ├── ProseCode.vue
+│       ├── ProseH1-H6.vue
+│       ├── ProsePre.vue
+│       ├── ProseTable.vue
+│       └── ...
+├── parser/              # MDC syntax parser
+└── highlighter/         # Code highlighting
+```
+
+### Prose Components
+
+Default HTML element overrides for markdown rendering:
+- `ProseA`, `ProseP`, `ProseStrong`, `ProseEm`
+- `ProseH1` - `ProseH6`
+- `ProsePre`, `ProseCode`
+- `ProseTable`, `ProseTh`, `ProseTd`, `ProseTr`
+- `ProseUl`, `ProseOl`, `ProseLi`
+- `ProseBlockquote`, `ProseHr`, `ProseImg`
+
+---
+
+## 5. Nuxt UI Analysis (`ref/ui`)
+
+UI component library with MDC integration.
+
+### Architecture
+
+```
+src/
+├── module.ts                    # Module setup + MDC mapping
+└── runtime/
+    ├── components/
+    │   ├── prose/               # MDC prose components
+    │   │   ├── Tabs.vue         # ::tabs container
+    │   │   ├── TabsItem.vue     # ::tabs-item
+    │   │   ├── Callout.vue      # ::callout
+    │   │   ├── Note.vue         # ::note
+    │   │   ├── Tip.vue          # ::tip
+    │   │   ├── Warning.vue      # ::warning
+    │   │   ├── Caution.vue      # ::caution
+    │   │   ├── Steps.vue        # ::steps
+    │   │   ├── CodeGroup.vue    # ::code-group
+    │   │   └── ...
+    │   ├── content/             # Content-specific components
+    │   └── Tabs.vue             # Base tabs component (UTabs)
+    ├── composables/
+    └── utils/
+```
+
+### Prose Tabs Implementation
+
+**`prose/Tabs.vue`** - Container component:
+- Extracts child `tabs-item` components from slots via `transformSlot()`
+- Creates `items` array with `{ label, icon, component }`
+- Supports `sync` prop for localStorage persistence
+- Supports `hash` prop for scroll-to-section
+
+**`prose/TabsItem.vue`** - Individual tab:
+- Exposes `label`, `description`, `icon` props
+- Parent reads these props to build tab headers
+
+---
+
+## 6. MDC Component Mapping
+
+Nuxt UI's `module.ts` (line 188-213) shows how MDC syntax maps to Vue components:
+
+```typescript
+// nuxt.config.ts or module setup
+mdc: {
+  components: {
+    map: {
+      'accordion': 'ProseAccordion',
+      'accordion-item': 'ProseAccordionItem',
+      'badge': 'ProseBadge',
+      'callout': 'ProseCallout',
+      'card': 'ProseCard',
+      'card-group': 'ProseCardGroup',
+      'caution': 'ProseCaution',
+      'code-collapse': 'ProseCodeCollapse',
+      'code-group': 'ProseCodeGroup',
+      'code-icon': 'ProseCodeIcon',
+      'code-preview': 'ProseCodePreview',
+      'code-tree': 'ProseCodeTree',
+      'collapsible': 'ProseCollapsible',
+      'field': 'ProseField',
+      'field-group': 'ProseFieldGroup',
+      'icon': 'ProseIcon',
+      'kbd': 'ProseKbd',
+      'note': 'ProseNote',
+      'steps': 'ProseSteps',
+      'tabs': 'ProseTabs',
+      'tabs-item': 'ProseTabsItem',
+      'tip': 'ProseTip',
+      'warning': 'ProseWarning'
+    }
+  }
+}
+```
+
+### How It Works
+
+| MDC Syntax | Vue Component | Location |
+|------------|---------------|----------|
+| `::tabs` | `ProseTabs.vue` | `components/content/` or global |
+| `::tabs-item{label="Tab 1"}` | `ProseTabsItem.vue` | `components/content/` or global |
+| `::note` | `ProseNote.vue` | `components/content/` or global |
+
+### For @pleaseai/docs (without @nuxt/ui)
+
+```typescript
+// nuxt.config.ts
+export default defineNuxtConfig({
+  mdc: {
+    components: {
+      map: {
+        'tabs': 'Tabs',
+        'tabs-item': 'TabsItem',
+        'note': 'Note',
+        'tip': 'Tip',
+        'warning': 'Warning',
+        'caution': 'Caution',
+        // custom mappings for components in components/content/
+      }
+    }
+  }
+})
+```
+
+---
+
+## 7. Component Mapping
 
 | Docus (nuxt-ui)      | Layer (shadcn-vue)          |
 | -------------------- | --------------------------- |
@@ -170,7 +338,7 @@ Override markdown rendering:
 
 ---
 
-## 4. Key Files to Reference
+## 8. Key Files to Reference
 
 ### From Docus
 
@@ -189,9 +357,25 @@ Override markdown rendering:
 - `components/DocsTableOfContents.vue` - TOC
 - `composables/useNavigation.ts` - Navigation
 
+### From Nuxt UI (`ref/ui`)
+
+- `src/module.ts` - MDC component mapping (line 188-213)
+- `src/runtime/components/prose/Tabs.vue` - MDC tabs container
+- `src/runtime/components/prose/TabsItem.vue` - Tab item wrapper
+- `src/runtime/components/Tabs.vue` - Base tabs component (UTabs)
+
+### From MDC (`ref/mdc`)
+
+- `src/runtime/components/prose/` - All default prose components
+
+### From Nuxt Content (`ref/content`)
+
+- `src/runtime/components/ContentRenderer.vue` - Content rendering
+- `docs/content/` - Documentation examples with MDC syntax
+
 ---
 
-## 5. Dependencies
+## 9. Dependencies
 
 ### Docus
 
@@ -222,7 +406,7 @@ Override markdown rendering:
 
 ---
 
-## 6. Design Decisions for @pleaseai/docs
+## 10. Design Decisions for @pleaseai/docs
 
 1. **No nuxt-ui** - Use reka-ui primitives via shadcn-vue
 2. **Tailwind v4** - oklch colors, @theme inline
