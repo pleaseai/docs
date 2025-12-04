@@ -1,0 +1,3 @@
+<template>
+  <AppSearchButton collapsed />
+</template>
