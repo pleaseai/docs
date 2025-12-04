@@ -28,11 +28,20 @@ const links = computed(() => {
 
 <template>
   <header class="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <!-- Skip to main content link for accessibility -->
+    <a
+      href="#main-content"
+      class="sr-only focus:not-sr-only focus:absolute focus:left-2 focus:top-2 focus:z-[100] focus:rounded-md focus:border focus:bg-background focus:px-4 focus:py-2"
+    >
+      Skip to main content
+    </a>
+
     <div class="container flex h-14 items-center">
       <!-- Logo -->
       <NuxtLink
         to="/"
         class="mr-4 flex items-center gap-2"
+        :aria-label="`${appConfig.docs?.title || 'Home'} - Go to homepage`"
       >
         <AppHeaderLogo class="h-6 w-auto shrink-0" />
       </NuxtLink>

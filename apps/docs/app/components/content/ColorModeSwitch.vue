@@ -3,22 +3,12 @@ import { SwitchRoot, SwitchThumb } from 'reka-ui'
 
 const colorMode = useColorMode()
 
-const isLight = ref(false)
-
-onMounted(() => {
-  isLight.value = colorMode.value === 'light'
-})
-
-// Sync from external color mode changes
-watch(() => colorMode.value, (newVal) => {
-  isLight.value = newVal === 'light'
-})
-
-// Sync to color mode when switch changes
-watch(isLight, (newVal) => {
-  if ((colorMode.value === 'light') !== newVal) {
-    colorMode.preference = newVal ? 'light' : 'dark'
-  }
+// Single computed with getter/setter for clean two-way binding
+const isLight = computed({
+  get: () => colorMode.value === 'light',
+  set: (value: boolean) => {
+    colorMode.preference = value ? 'light' : 'dark'
+  },
 })
 </script>
 
