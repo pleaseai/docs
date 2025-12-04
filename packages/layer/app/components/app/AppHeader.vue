@@ -6,8 +6,10 @@ import { Separator } from '~/components/ui/separator'
 const appConfig = useAppConfig()
 const colorMode = useColorMode()
 
+const isDark = computed(() => colorMode.value === 'dark')
+
 function toggleColorMode() {
-  colorMode.preference = colorMode.value === 'dark' ? 'light' : 'dark'
+  colorMode.preference = isDark.value ? 'light' : 'dark'
 }
 
 const links = computed(() => {
@@ -55,11 +57,11 @@ const links = computed(() => {
             size="icon"
             @click="toggleColorMode"
           >
-            <Sun
-              v-if="colorMode.value === 'dark'"
+            <Moon
+              v-if="isDark"
               class="size-5"
             />
-            <Moon
+            <Sun
               v-else
               class="size-5"
             />

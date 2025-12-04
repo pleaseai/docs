@@ -1,21 +1,15 @@
 export default defineAppConfig({
-  socials: {
-    x: 'https://x.com/nuxt_js',
-    discord: 'https://discord.com/invite/ps2h6QT',
-    nuxt: 'https://nuxt.com',
+  docs: {
+    title: 'docs-please',
+    github: {
+      url: 'https://github.com/pleaseai/docs',
+      owner: 'pleaseai',
+      name: 'docs',
+      branch: 'main',
+    },
   },
   github: {
-    rootDir: 'docs',
-  },
-  toc: {
-    bottom: {
-      links: [{
-        icon: 'i-lucide-book-open',
-        label: 'Nuxt UI docs',
-        to: 'https://ui.nuxt.com/getting-started/installation/nuxt',
-        target: '_blank',
-      }],
-    },
+    rootDir: 'apps/docs',
   },
   ui: {
     pageHero: {
