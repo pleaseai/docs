@@ -60,7 +60,7 @@ Ship fast, flexible, and SEO-optimized documentation with beautiful design out o
     class: col-span-2
     ---
       :::::tabs
-        ::::::tabs-item{label="Preview" class="mt-5"}
+        ::::::tabs-item{label="Preview" icon="lucide:eye" class="mt-5"}
         :::::::div{class="flex flex-col gap-4"}
           ::::::::note{class="my-0"}
           Here's some additional information for you.
@@ -80,7 +80,7 @@ Ship fast, flexible, and SEO-optimized documentation with beautiful design out o
         :::::::
         ::::::
 
-        ::::::tabs-item{label="Code" class="mt-5 mb-2 text-xs overflow-x-auto"}
+        ::::::tabs-item{label="Code" icon="lucide:code" class="mt-5 mb-2 text-xs overflow-x-auto"}
         ```mdc
         ::note
         Here's some additional information.

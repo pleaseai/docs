@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { HTMLAttributes } from 'vue'
+import type { HTMLAttributes, VNode } from 'vue'
 
 export interface TabsItemProps {
   /**
@@ -15,7 +15,7 @@ export interface TabsItemProps {
 
 const props = defineProps<TabsItemProps>()
 defineSlots<{
-  default(): any
+  default(): VNode[]
 }>()
 </script>
 

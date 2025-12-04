@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { HTMLAttributes } from 'vue'
+import type { HTMLAttributes, VNode } from 'vue'
 import { computed, onBeforeUpdate, onMounted, ref, watch } from 'vue'
 import { cn } from '~/lib/utils'
 import {
@@ -28,7 +28,7 @@ const props = withDefaults(defineProps<TabsProps>(), {
 })
 
 const slots = defineSlots<{
-  default(): any
+  default(): VNode[]
 }>()
 
 const defaultValue = computed(() => String(props.defaultIndex))
@@ -39,31 +39,42 @@ interface TabItem {
   value: string
   label: string
   icon?: string
-  component: any
+  component: VNode
 }
 
 const items = computed<TabItem[]>(() => {
   // eslint-disable-next-line @typescript-eslint/no-unused-expressions
   rerenderCount.value
-  return slots.default?.()?.flatMap(transformSlot).filter(Boolean) || []
+
+  let counter = 0
+  function transformSlot(slot: VNode): TabItem | null {
+    if (typeof slot.type === 'symbol') {
+      return null // Fragments are handled by flatMap in parent call
+    }
+
+    const slotProps = slot.props as { label?: string, icon?: string } | null
+    if (!slotProps?.label) {
+      return null
+    }
+
+    return {
+      value: String(counter++),
+      label: slotProps.label,
+      icon: slotProps.icon,
+      component: slot,
+    }
+  }
+
+  function flattenSlots(slot: VNode): VNode[] {
+    if (typeof slot.type === 'symbol') {
+      const children = slot.children as VNode[] | null
+      return children?.flatMap(flattenSlots) ?? []
+    }
+    return [slot]
+  }
+
+  return slots.default?.()?.flatMap(flattenSlots).map(transformSlot).filter((item): item is TabItem => item !== null) || []
 })
-
-function transformSlot(slot: any, index: number): TabItem | TabItem[] | null {
-  if (typeof slot.type === 'symbol') {
-    return slot.children?.map(transformSlot)
-  }
-
-  if (!slot.props?.label) {
-    return null
-  }
-
-  return {
-    value: String(index),
-    label: slot.props.label,
-    icon: slot.props?.icon,
-    component: slot,
-  }
-}
 
 onMounted(() => {
   if (props.sync) {
@@ -97,6 +108,12 @@ onBeforeUpdate(() => rerenderCount.value++)
         :key="item.value"
         :value="item.value"
       >
+        <Icon
+          v-if="item.icon"
+          :name="item.icon"
+          class="size-4 mr-1.5"
+          aria-hidden="true"
+        />
         {{ item.label }}
       </UITabsTrigger>
     </UITabsList>
