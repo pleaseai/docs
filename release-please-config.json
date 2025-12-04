@@ -10,13 +10,6 @@
       "component": "docs-please",
       "prerelease": true,
       "prerelease-type": "beta"
-    },
-    "apps/docs": {
-      "release-type": "node",
-      "package-name": "@pleaseai/docs-site",
-      "component": "docs",
-      "prerelease": true,
-      "prerelease-type": "beta"
     }
   },
   "plugins": ["node-workspace"],
