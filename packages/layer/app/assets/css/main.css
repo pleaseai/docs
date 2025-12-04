@@ -1,3 +1,4 @@
+@import "tailwindcss";
 @import 'tw-animate-css';
 
 /* Tailwind CSS v4: Source detection for layer components */
@@ -44,6 +45,10 @@
   --color-chart-3: var(--chart-3);
   --color-chart-2: var(--chart-2);
   --color-chart-1: var(--chart-1);
+  --color-code: var(--code);
+  --color-code-foreground: var(--code-foreground);
+  --color-code-highlight: var(--code-highlight);
+  --color-code-number: var(--code-number);
 }
 
 :root {
@@ -79,6 +84,10 @@
   --chart-5: oklch(0.769 0.188 70.08);
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
+  --code: oklch(0.98 0 0);
+  --code-foreground: oklch(0.145 0 0);
+  --code-highlight: oklch(0.96 0 0);
+  --code-number: oklch(0.56 0 0);
 }
 
 .dark {
@@ -113,6 +122,10 @@
   --chart-3: oklch(0.769 0.188 70.08);
   --chart-4: oklch(0.627 0.265 303.9);
   --chart-5: oklch(0.645 0.246 16.439);
+  --code: oklch(0.2 0 0);
+  --code-foreground: oklch(0.708 0 0);
+  --code-highlight: oklch(0.27 0 0);
+  --code-number: oklch(0.72 0 0);
 }
 
 @layer base {
@@ -156,24 +169,131 @@
 
 /* Code block styling */
 @layer components {
-  [data-shiki] {
-    @apply rounded-lg border bg-muted/50 text-sm;
+  [data-pretty-code-figure] {
+    background-color: var(--color-code);
+    color: var(--color-code-foreground);
+    border-radius: var(--radius-lg, 0.625rem);
+    margin-top: calc(var(--spacing, 0.25rem) * 6);
+    overflow: hidden;
+    font-size: var(--text-sm, 0.875rem);
+    outline: none;
+    position: relative;
+    @apply -mx-1 md:-mx-1;
+
+    &:has([data-pretty-code-title]) [data-slot="copy-button"] {
+      top: calc(var(--spacing) * 1.5) !important;
+    }
+
+    pre {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+      background: transparent !important;
+      border: none !important;
+      border-radius: 0 !important;
+      margin-top: 0 !important;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
   }
 
-  [data-shiki] code {
-    @apply block overflow-x-auto p-4;
+  [data-pretty-code-title] {
+    border-bottom: 1px solid color-mix(in oklab, var(--border) 30%, transparent);
+    padding-block: calc(var(--spacing) * 2.5);
+    padding-inline: calc(var(--spacing) * 4);
+    font-size: var(--text-sm);
+    font-family: var(--font-mono);
+    color: var(--color-code-foreground);
   }
 
-  [data-shiki] .line {
-    @apply min-h-[1.5rem];
+  [data-line-numbers] {
+    display: grid;
+    min-width: 100%;
+    white-space: pre;
+    border: 0;
+    background: transparent;
+    padding: 0;
+    counter-reset: line;
+    box-decoration-break: clone;
   }
 
-  [data-shiki] .line span {
-    color: var(--shiki-light);
+  [data-line-numbers] [data-line]::before {
+    font-size: var(--text-sm);
+    counter-increment: line;
+    content: counter(line);
+    display: inline-block;
+    width: calc(var(--spacing) * 16);
+    padding-right: calc(var(--spacing) * 6);
+    text-align: right;
+    color: var(--color-code-number);
+    background-color: var(--color-code);
+    position: sticky;
+    left: 0;
   }
 
-  .dark [data-shiki] .line span {
+  [data-line-numbers] [data-highlighted-line][data-line]::before {
+    background-color: var(--color-code-highlight);
+  }
+
+  [data-line],
+  .line {
+    padding-top: calc(var(--spacing, 0.25rem) * 0.5);
+    padding-bottom: calc(var(--spacing, 0.25rem) * 0.5);
+    min-height: calc(var(--spacing, 0.25rem) * 1);
+    width: 100%;
+    display: block;
+  }
+
+  /* Override Shiki inline styles - !important required for both modes
+     to ensure our theme colors take precedence over Shiki's inline styles */
+  [data-line] span,
+  .line span {
+    color: var(--shiki-light) !important;
+  }
+
+  .dark [data-line] span,
+  .dark .line span {
     color: var(--shiki-dark) !important;
+  }
+
+  /* Shiki code block styling */
+  pre code .line {
+    display: block;
+  }
+
+  .shiki {
+    background-color: var(--color-code) !important;
+  }
+
+  [data-highlighted-line],
+  [data-highlighted-chars] {
+    position: relative;
+    background-color: var(--color-code-highlight);
+  }
+
+  [data-highlighted-line] {
+    &:after {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 2px;
+      height: 100%;
+      content: "";
+      background-color: color-mix(
+        in oklab,
+        var(--muted-foreground) 50%,
+        transparent
+      );
+    }
+  }
+
+  [data-highlighted-chars] {
+    border-radius: var(--radius-sm);
+    padding-inline: 0.3rem;
+    padding-block: 0.1rem;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
   }
 
   /* Prose styles for documentation */

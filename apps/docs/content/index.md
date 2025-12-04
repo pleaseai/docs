@@ -80,7 +80,7 @@ Ship fast, flexible, and SEO-optimized documentation with beautiful design out o
         :::::::
         ::::::
 
-        ::::::tabs-item{label="Code" icon="lucide:code" class="mt-5 mb-2 text-xs overflow-x-auto"}
+        ::::::tabs-item{label="Code" icon="lucide:code" class="mt-5 mb-2 text-xs"}
         ```mdc
         ::note
         Here's some additional information.
