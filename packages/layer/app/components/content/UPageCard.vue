@@ -69,14 +69,14 @@ const isLink = computed(() => !!props.to)
       </div>
 
       <!-- Default slot for media/illustration (below content) -->
-      <div
+      <CardContent
         v-if="$slots.default"
         :class="[
           props.orientation === 'horizontal' ? 'sm:w-1/3 shrink-0' : '',
         ]"
       >
         <slot />
-      </div>
+      </CardContent>
     </component>
   </Card>
 </template>

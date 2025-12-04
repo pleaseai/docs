@@ -7,3 +7,12 @@
 [submodule "ref/docus"]
 	path = ref/docus
 	url = https://github.com/nuxt-content/docus
+[submodule "ref/content"]
+	path = ref/content
+	url = https://github.com/nuxt/content
+[submodule "ref/mdc"]
+	path = ref/mdc
+	url = https://github.com/nuxt-content/mdc
+[submodule "ref/ui"]
+	path = ref/ui
+	url = https://github.com/nuxt/ui

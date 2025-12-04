@@ -48,6 +48,19 @@ export default defineNuxtConfig({
       },
     },
   },
+  mdc: {
+    components: {
+      map: {
+        'callout': 'Callout',
+        'caution': 'Caution',
+        'note': 'Note',
+        'tip': 'Tip',
+        'warning': 'Warning',
+        'tabs': 'Tabs',
+        'tabs-item': 'TabsItem',
+      },
+    },
+  },
   compatibilityDate: '2025-01-01',
   nitro: {
     prerender: {
