@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.1-beta.0](https://github.com/pleaseai/docs/compare/docs-please-v0.2.0-beta.0...docs-please-v0.2.1-beta.0) (2025-12-05)
+
+
+### Features
+
+* **layer:** add LLM support with raw markdown endpoint and SEO modules ([a5ec790](https://github.com/pleaseai/docs/commit/a5ec790fdf268c2df578b47c448893c90d5dfde7))
+
 ## [0.2.0-beta.0](https://github.com/pleaseai/docs/compare/docs-please-v0.1.0-beta.0...docs-please-v0.2.0-beta.0) (2025-12-04)
 
 
