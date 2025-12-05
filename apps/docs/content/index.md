@@ -8,7 +8,7 @@ seo:
 ::u-page-hero
 #headline
   :::u-button{to="https://github.com/pleaseai/docs/releases" target="_blank" variant="outline" size="sm"}
-  docs-please v1.0 →
+  docs-please v0 →
   :::
 
 #title

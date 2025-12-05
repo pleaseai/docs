@@ -23,4 +23,13 @@ export default defineNuxtConfig({
       nodeCompat: true,
     },
   },
+    llms: {
+        domain: 'https://docs-please.pages.dev',
+        title: 'Docs Please',
+        description: 'Documentation for Docs Please',
+        full: {
+            title: 'Docs Please',
+            description: 'Documentation for Docs Please',
+        },
+    },
 })
