@@ -40,10 +40,12 @@ const isMac = computed(() => {
     <span class="hidden lg:inline-flex">Search documentation...</span>
     <span class="inline-flex lg:hidden">Search...</span>
     <div class="absolute right-1.5 top-1.5 hidden gap-1 sm:flex">
-      <KbdGroup>
-        <Kbd class="border">{{ isMac ? '⌘' : 'Ctrl' }}</Kbd>
-        <Kbd class="border">K</Kbd>
-      </KbdGroup>
+      <ClientOnly>
+        <KbdGroup>
+          <Kbd class="border">{{ isMac ? '⌘' : 'Ctrl' }}</Kbd>
+          <Kbd class="border">K</Kbd>
+        </KbdGroup>
+      </ClientOnly>
     </div>
   </Button>
 </template>

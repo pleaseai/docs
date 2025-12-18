@@ -12,6 +12,7 @@ export interface SearchItem {
   suffix?: string
   active?: boolean
   disabled?: boolean
+  isDoc?: boolean
 }
 
 export interface SearchGroup {
@@ -26,9 +27,11 @@ export function useContentSearch() {
   }
 }
 
-export function flattenNavigation(items: NavigationItem[], prefix = ''): SearchItem[] {
+export function flattenNavigation(items: NavigationItem[], prefix = '', isDocSection = false): SearchItem[] {
   return items.flatMap((item) => {
     const result: SearchItem[] = []
+    // Determine if this item is a doc page based on parent context or path
+    const itemIsDoc = isDocSection || item.path?.startsWith('/docs')
 
     if (item.type === 'page' && item.path) {
       result.push({
@@ -36,11 +39,12 @@ export function flattenNavigation(items: NavigationItem[], prefix = ''): SearchI
         label: item.title,
         to: item.path,
         prefix: prefix || undefined,
+        isDoc: itemIsDoc,
       })
     }
 
     if (item.children?.length) {
-      result.push(...flattenNavigation(item.children, item.title))
+      result.push(...flattenNavigation(item.children, item.title, itemIsDoc))
     }
 
     return result

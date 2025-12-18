@@ -127,7 +127,7 @@ onMounted(() => {
               @select="() => runCommand(() => router.push(item.to!))"
             >
               <FileText
-                v-if="item.to?.includes('/docs/')"
+                v-if="item.isDoc"
                 class="mr-2 size-4"
               />
               <ArrowRight
