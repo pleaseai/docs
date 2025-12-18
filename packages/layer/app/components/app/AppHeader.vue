@@ -1,57 +1,112 @@
 <script setup lang="ts">
-import { Moon, Sun } from 'lucide-vue-next'
+import { Github, Moon, Sun } from 'lucide-vue-next'
 import { Button } from '~/components/ui/button'
-
-const colorMode = useColorMode()
-
-function toggleColorMode() {
-  colorMode.preference = colorMode.value === 'dark' ? 'light' : 'dark'
-}
+import { Separator } from '~/components/ui/separator'
 
 const appConfig = useAppConfig()
-const title = computed(() => appConfig.docs?.title || 'Docs')
+const colorMode = useColorMode()
+
+const isDark = computed(() => colorMode.value === 'dark')
+
+function toggleColorMode() {
+  colorMode.preference = isDark.value ? 'light' : 'dark'
+}
+
+const links = computed(() => {
+  const result = []
+  if (appConfig.docs?.github?.url) {
+    result.push({
+      icon: Github,
+      to: appConfig.docs.github.url,
+      target: '_blank',
+      ariaLabel: 'GitHub',
+    })
+  }
+  return result
+})
 </script>
 
 <template>
   <header class="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <!-- Skip to main content link for accessibility -->
+    <a
+      href="#main-content"
+      class="sr-only focus:not-sr-only focus:absolute focus:left-2 focus:top-2 focus:z-[100] focus:rounded-md focus:border focus:bg-background focus:px-4 focus:py-2"
+    >
+      Skip to main content
+    </a>
+
     <div class="container flex h-14 items-center">
       <!-- Logo -->
-      <div class="mr-4 flex">
-        <NuxtLink
-          to="/"
-          class="flex items-center space-x-2"
-        >
-          <span class="font-bold">{{ title }}</span>
-        </NuxtLink>
+      <NuxtLink
+        to="/"
+        class="mr-4 flex items-center gap-2"
+        :aria-label="`${appConfig.docs?.title || 'Home'} - Go to homepage`"
+      >
+        <AppHeaderLogo class="h-6 w-auto shrink-0" />
+      </NuxtLink>
+
+      <!-- Center (Search) -->
+      <div class="hidden flex-1 justify-center lg:flex">
+        <AppHeaderCenter />
       </div>
 
-      <!-- Navigation -->
-      <nav class="flex flex-1 items-center space-x-6 text-sm font-medium">
-        <NuxtLink
-          to="/docs"
-          class="text-muted-foreground transition-colors hover:text-foreground"
-        >
-          Documentation
-        </NuxtLink>
-      </nav>
+      <!-- Spacer for mobile -->
+      <div class="flex-1 lg:hidden" />
 
-      <!-- Actions -->
-      <div class="flex items-center space-x-2">
-        <Button
-          variant="ghost"
-          size="icon"
-          @click="toggleColorMode"
-        >
-          <Sun
-            v-if="colorMode.value === 'dark'"
-            class="size-5"
+      <!-- Right Actions -->
+      <div class="flex items-center gap-1">
+        <!-- Search button (mobile) -->
+        <AppHeaderSearch class="lg:hidden" />
+
+        <!-- Color mode toggle -->
+        <ClientOnly>
+          <Button
+            variant="ghost"
+            size="icon"
+            @click="toggleColorMode"
+          >
+            <Moon
+              v-if="isDark"
+              class="size-5"
+            />
+            <Sun
+              v-else
+              class="size-5"
+            />
+            <span class="sr-only">Toggle theme</span>
+          </Button>
+
+          <template #fallback>
+            <div class="size-8 animate-pulse rounded-md bg-muted" />
+          </template>
+        </ClientOnly>
+
+        <!-- External links (GitHub, etc.) -->
+        <template v-if="links.length">
+          <Separator
+            orientation="vertical"
+            class="mx-1 h-6"
           />
-          <Moon
-            v-else
-            class="size-5"
-          />
-          <span class="sr-only">Toggle theme</span>
-        </Button>
+          <Button
+            v-for="link in links"
+            :key="link.to"
+            variant="ghost"
+            size="icon"
+            as-child
+          >
+            <a
+              :href="link.to"
+              :target="link.target"
+              :aria-label="link.ariaLabel"
+            >
+              <component
+                :is="link.icon"
+                class="size-5"
+              />
+            </a>
+          </Button>
+        </template>
       </div>
     </div>
   </header>

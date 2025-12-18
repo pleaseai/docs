@@ -29,6 +29,50 @@ export default defineNuxtSchema({
           type: 'string',
         },
       },
+      header: {
+        $schema: {
+          title: 'Header Configuration',
+          description: 'Header configuration options',
+        },
+        title: {
+          $default: '',
+          $schema: {
+            title: 'Header Title',
+            description: 'Title displayed in the header (defaults to site title)',
+            type: 'string',
+          },
+        },
+        logo: {
+          $schema: {
+            title: 'Logo Configuration',
+            description: 'Logo images for light and dark modes',
+          },
+          light: {
+            $default: '',
+            $schema: {
+              title: 'Light Mode Logo',
+              description: 'Logo image for light mode',
+              type: 'string',
+            },
+          },
+          dark: {
+            $default: '',
+            $schema: {
+              title: 'Dark Mode Logo',
+              description: 'Logo image for dark mode',
+              type: 'string',
+            },
+          },
+          alt: {
+            $default: '',
+            $schema: {
+              title: 'Logo Alt Text',
+              description: 'Alt text for the logo image',
+              type: 'string',
+            },
+          },
+        },
+      },
       github: {
         $schema: {
           title: 'GitHub Configuration',

@@ -64,6 +64,7 @@ export default defineNuxtConfig({
         'tabs': 'Tabs',
         'tabs-item': 'TabsItem',
         'u-color-mode-image': 'UColorModeImage',
+        'kbd': 'ProseKbd',
       },
     },
   },
