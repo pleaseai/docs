@@ -2,7 +2,7 @@
 </script>
 
 <template>
-  <tr class="last:border-b-none m-0 border-b">
+  <tr class="m-0 border-b last:border-b-0">
     <slot />
   </tr>
 </template>
