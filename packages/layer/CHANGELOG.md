@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.2.1-beta.0](https://github.com/pleaseai/docs/compare/docs-please-v0.2.0-beta.0...docs-please-v0.2.1-beta.0) (2025-12-19)
+
+
+### Features
+
+* **layer:** add header search with command dialog ([#12](https://github.com/pleaseai/docs/issues/12)) ([ac26c66](https://github.com/pleaseai/docs/commit/ac26c6685d6d8267b29e35a666fd132d966e3244))
+* **layer:** add LLM support with raw markdown endpoint and SEO modules ([a5ec790](https://github.com/pleaseai/docs/commit/a5ec790fdf268c2df578b47c448893c90d5dfde7))
+* **layer:** add MDC content components for accordion, badge, and collapsible ([d6f543a](https://github.com/pleaseai/docs/commit/d6f543a8a6bc73b92971c2613c3ea71b7dbd6e60))
+
 ## [0.2.0-beta.0](https://github.com/pleaseai/docs/compare/docs-please-v0.1.0-beta.0...docs-please-v0.2.0-beta.0) (2025-12-04)
 
 
