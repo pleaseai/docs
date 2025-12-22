@@ -1,4 +1,4 @@
-import { createResolver, useNuxt } from '@nuxt/kit'
+import { createResolver, extendViteConfig, useNuxt } from '@nuxt/kit'
 import tailwindcss from '@tailwindcss/vite'
 
 const { resolve } = createResolver(import.meta.url)
@@ -13,9 +13,20 @@ export default defineNuxtConfig({
     '@nuxt/image',
     '@nuxt/icon',
     'nuxt-og-image',
-      '@nuxtjs/robots',
-      'nuxt-og-image',
-      'nuxt-llms',
+    '@nuxtjs/robots',
+    'nuxt-llms',
+    () => {
+      // Update @nuxt/content optimizeDeps options for layer compatibility
+      extendViteConfig((config) => {
+        config.optimizeDeps ||= {}
+        config.optimizeDeps.include ||= []
+        const includes = new Set(config.optimizeDeps.include)
+        includes.add('@nuxt/content > slugify')
+        config.optimizeDeps.include = Array.from(includes).map(id =>
+          id.startsWith('@nuxt/content > ') ? `docs-please > ${id}` : id,
+        )
+      })
+    },
   ],
   devtools: { enabled: true },
   css: [resolve('./app/assets/css/main.css')],
