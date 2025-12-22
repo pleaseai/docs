@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.5](https://github.com/pleaseai/docs/compare/docs-please-v0.2.4...docs-please-v0.2.5) (2025-12-22)
+
+
+### Bug Fixes
+
+* move @nuxtjs/robots and nuxt-llms to dependencies ([#23](https://github.com/pleaseai/docs/issues/23)) ([cc1453a](https://github.com/pleaseai/docs/commit/cc1453a6287a2f3eb05d51c80c5356491f201ddd))
+
 ## [0.2.4](https://github.com/pleaseai/docs/compare/docs-please-v0.2.3...docs-please-v0.2.4) (2025-12-22)
 
 
