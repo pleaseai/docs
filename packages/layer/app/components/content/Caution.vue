@@ -11,8 +11,8 @@ defineProps<{
 <template>
   <Callout
     type="caution"
-    :title
-    :class
+    :title="title"
+    :class="$attrs.class"
   >
     <template
       v-if="$slots.title"

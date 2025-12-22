@@ -8,7 +8,7 @@ interface Props extends NuxtLinkProps {
   size?: ButtonVariants['size']
 }
 
-const props = withDefaults(defineProps<Props>(), {
+withDefaults(defineProps<Props>(), {
   size: 'default',
   variant: 'default',
 })
