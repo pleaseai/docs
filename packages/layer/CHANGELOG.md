@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.3](https://github.com/pleaseai/docs/compare/docs-please-v0.2.2...docs-please-v0.2.3) (2025-12-22)
+
+
+### Bug Fixes
+
+* ensure @nuxt/content layer compatibility and update deprecated imports ([#18](https://github.com/pleaseai/docs/issues/18)) ([1099ea0](https://github.com/pleaseai/docs/commit/1099ea0fa0bdfc95c961f6f235e3eca1b01962d5))
+
 ## [0.2.2-beta.0](https://github.com/pleaseai/docs/compare/docs-please-v0.2.1-beta.0...docs-please-v0.2.2-beta.0) (2025-12-22)
 
 
