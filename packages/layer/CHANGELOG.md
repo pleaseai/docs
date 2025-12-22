@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.4](https://github.com/pleaseai/docs/compare/docs-please-v0.2.3...docs-please-v0.2.4) (2025-12-22)
+
+
+### Bug Fixes
+
+* revert @nuxt/content import to /nitro for layer compatibility ([#20](https://github.com/pleaseai/docs/issues/20)) ([cb4270b](https://github.com/pleaseai/docs/commit/cb4270bf321c90add9c881b67cd4e3219f00ece2))
+
 ## [0.2.3](https://github.com/pleaseai/docs/compare/docs-please-v0.2.2...docs-please-v0.2.3) (2025-12-22)
 
 
