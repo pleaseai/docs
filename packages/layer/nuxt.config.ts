@@ -20,9 +20,11 @@ export default defineNuxtConfig({
       extendViteConfig((config) => {
         config.optimizeDeps ||= {}
         config.optimizeDeps.include ||= []
-        config.optimizeDeps.include.push('@nuxt/content > slugify')
-        config.optimizeDeps.include = config.optimizeDeps.include
-          .map(id => id.replace(/^@nuxt\/content > /, 'docs-please > @nuxt/content > '))
+        const includes = new Set(config.optimizeDeps.include)
+        includes.add('@nuxt/content > slugify')
+        config.optimizeDeps.include = Array.from(includes).map(id =>
+          id.startsWith('@nuxt/content > ') ? `docs-please > ${id}` : id,
+        )
       })
     },
   ],
