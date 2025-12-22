@@ -12,7 +12,10 @@ const props = defineProps<{
 </script>
 
 <template>
-  <div data-slot="prose-table" class="no-scrollbar my-6 w-full overflow-hidden rounded-lg border">
+  <div
+    data-slot="prose-table"
+    class="no-scrollbar my-6 w-full overflow-hidden rounded-lg border"
+  >
     <table
       :class="cn(
         'w-full border-collapse text-sm',

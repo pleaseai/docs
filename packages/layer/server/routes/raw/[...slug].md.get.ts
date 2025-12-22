@@ -1,6 +1,6 @@
 import { withLeadingSlash } from 'ufo'
 import { stringify } from 'minimark/stringify'
-import { queryCollection } from '@nuxt/content/server'
+import { queryCollection } from '@nuxt/content/nitro'
 import type { Collections } from '@nuxt/content'
 
 export default eventHandler(async (event) => {
