@@ -48,6 +48,11 @@ jobs:
         with:
           bun-version: latest
 
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          registry-url: 'https://registry.npmjs.org'
+
       - name: Install dependencies
         run: bun install --frozen-lockfile
 
@@ -55,6 +60,6 @@ jobs:
         if: ${{ needs.release-please.outputs.layer_release_created == 'true' }}
         run: |
           bun pm pack
-          bunx npm publish ./docs-please-${{ needs.release-please.outputs.layer_version }}.tgz --provenance
+          npm publish ./docs-please-${{ needs.release-please.outputs.layer_version }}.tgz --provenance
         working-directory: packages/layer
 

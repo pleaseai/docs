@@ -2,8 +2,11 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/ref/content" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/ref/docus" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/ref/fumadocs" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/ref/mdc" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/ref/shadcn-vue" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/ref/ui" vcs="Git" />
   </component>
 </project>
