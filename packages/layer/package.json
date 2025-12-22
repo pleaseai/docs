@@ -18,7 +18,8 @@
     "modules",
     "nuxt.config.ts",
     "nuxt.schema.ts",
-    "server"
+    "server",
+    "utils"
   ],
   "scripts": {
     "dev": "nuxt dev",
