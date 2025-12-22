@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.2-beta.0](https://github.com/pleaseai/docs/compare/docs-please-v0.2.1-beta.0...docs-please-v0.2.2-beta.0) (2025-12-22)
+
+
+### Bug Fixes
+
+* export utils directory from @pleaseai/docs layer ([#15](https://github.com/pleaseai/docs/issues/15)) ([b696032](https://github.com/pleaseai/docs/commit/b696032ae0d979e822948a3ede12fd8efce12781))
+
 ## [0.2.1-beta.0](https://github.com/pleaseai/docs/compare/docs-please-v0.2.0-beta.0...docs-please-v0.2.1-beta.0) (2025-12-19)
 
 
