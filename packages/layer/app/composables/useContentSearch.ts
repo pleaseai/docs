@@ -27,7 +27,7 @@ export function useContentSearch() {
   }
 }
 
-export function flattenNavigation(items: NavigationItem[], prefix = '', isDocSection = false): SearchItem[] {
+export function flattenNavigationToSearchItems(items: NavigationItem[], prefix = '', isDocSection = false): SearchItem[] {
   return items.flatMap((item) => {
     const result: SearchItem[] = []
     // Determine if this item is a doc page based on parent context or path
@@ -44,7 +44,7 @@ export function flattenNavigation(items: NavigationItem[], prefix = '', isDocSec
     }
 
     if (item.children?.length) {
-      result.push(...flattenNavigation(item.children, item.title, itemIsDoc))
+      result.push(...flattenNavigationToSearchItems(item.children, item.title, itemIsDoc))
     }
 
     return result

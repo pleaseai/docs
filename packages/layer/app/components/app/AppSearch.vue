@@ -17,7 +17,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from '~/components/ui/dialog'
-import { flattenNavigation, useContentSearch } from '~/composables/useContentSearch'
+import { flattenNavigationToSearchItems, useContentSearch } from '~/composables/useContentSearch'
 
 const router = useRouter()
 const colorMode = useColorMode()
@@ -27,7 +27,7 @@ const { data: navigation } = await useNavigation()
 const searchTerm = ref('')
 
 // Flatten navigation for search
-const searchItems = computed(() => flattenNavigation(navigation.value))
+const searchItems = computed(() => flattenNavigationToSearchItems(navigation.value))
 
 // Fuse search
 const { results } = useFuse(searchTerm, searchItems, {
