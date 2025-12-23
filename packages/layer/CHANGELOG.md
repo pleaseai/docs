@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.6](https://github.com/pleaseai/docs/compare/docs-please-v0.2.5...docs-please-v0.2.6) (2025-12-22)
+
+
+### Bug Fixes
+
+* correct zod import path from 'zod/v4' to 'zod' ([#25](https://github.com/pleaseai/docs/issues/25)) ([9455e92](https://github.com/pleaseai/docs/commit/9455e9272c1962c8dbcccf106310fcc4f16bff40))
+
 ## [0.2.5](https://github.com/pleaseai/docs/compare/docs-please-v0.2.4...docs-please-v0.2.5) (2025-12-22)
 
 
