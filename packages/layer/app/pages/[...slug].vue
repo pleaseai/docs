@@ -11,6 +11,10 @@ const { data: page } = await useAsyncData(`docs-${route.path}`, () =>
 const { data: surround } = await useAsyncData(`surround-${route.path}`, () =>
   queryCollectionItemSurroundings('docs', route.path))
 
+const { data: navigation } = await useNavigation()
+
+const breadcrumbs = computed(() => findPageBreadcrumbs(navigation.value, route.path))
+
 // Extract TOC from page body
 const _toc = computed(() => {
   if (!page.value?.body)
@@ -59,9 +63,13 @@ const _toc = computed(() => {
   return headings
 })
 
-useSeoMeta({
-  title: page.value?.title,
-  description: page.value?.description,
+useSeo({
+  title: () => page.value?.title,
+  description: () => page.value?.description,
+  type: 'article',
+  publishedAt: () => (page.value as { publishedAt?: string } | null | undefined)?.publishedAt,
+  modifiedAt: () => (page.value as { modifiedAt?: string } | null | undefined)?.modifiedAt,
+  breadcrumbs,
 })
 
 // Register raw markdown variant so static builds expose /raw/*.md for AI agents.
