@@ -58,8 +58,11 @@ WORKFLOW: This tool returns the complete page content including title, descripti
       if (!page)
         throw createError({ statusCode: 404, message: 'Page not found' })
 
-      // Normalize so we always produce `/raw<path>.md` with a single leading slash.
-      const rawPath = `/raw${withLeadingSlash(path)}.md`
+      // Use the canonical `page.path` from the database (not the raw user
+      // input `path`) so non-canonical casing or trailing slashes don't
+      // produce a 404 when fetching the raw markdown. Normalize so we always
+      // produce `/raw<path>.md` with a single leading slash.
+      const rawPath = `/raw${withLeadingSlash(page.path)}.md`
       const content = await event.$fetch<string>(rawPath)
 
       return {
@@ -71,8 +74,14 @@ WORKFLOW: This tool returns the complete page content including title, descripti
       }
     }
     catch (error) {
-      if ((error as { statusCode?: number }).statusCode === 404)
+      if (
+        error
+        && typeof error === 'object'
+        && 'statusCode' in error
+        && (error as { statusCode?: number }).statusCode === 404
+      ) {
         throw error
+      }
       throw createError({ statusCode: 500, message: 'Failed to get page' })
     }
   },

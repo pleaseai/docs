@@ -21,13 +21,22 @@ export function getAvailableLocales(publicConfig: Record<string, unknown>): stri
  * Build the list of content collection names to query based on the requested
  * locale and the available i18n locales.
  *
- * - When a specific locale is given (and recognized) → `['docs_<locale>']`
- * - When i18n is configured → one collection per locale (`docs_<lc>`)
+ * - When a specific locale is given on an i18n site:
+ *   - if recognized → `['docs_<locale>']`
+ *   - if not recognized → `[]` (so the caller returns no pages instead of
+ *     silently falling back to every other language)
+ * - When a specific locale is given on a non-i18n site → `['docs']`
+ *   (single-locale sites have no concept of "wrong locale")
+ * - When no locale is given and i18n is configured → one collection per
+ *   locale (`docs_<lc>`)
  * - Otherwise → `['docs']`
  */
 export function getCollectionsToQuery(locale: string | undefined, availableLocales: string[]): string[] {
-  if (locale && availableLocales.includes(locale))
-    return [`docs_${locale}`]
+  if (locale) {
+    if (availableLocales.length === 0)
+      return ['docs']
+    return availableLocales.includes(locale) ? [`docs_${locale}`] : []
+  }
 
   return availableLocales.length > 0
     ? availableLocales.map(l => `docs_${l}`)
