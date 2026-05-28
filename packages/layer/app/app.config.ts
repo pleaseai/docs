@@ -17,5 +17,8 @@ export default defineAppConfig({
       url: '',
       branch: 'main',
     },
+    shortcuts: {
+      toggleColorMode: 'd',
+    },
   },
 })

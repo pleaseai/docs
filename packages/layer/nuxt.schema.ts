@@ -107,6 +107,20 @@ export default defineNuxtSchema({
           },
         },
       },
+      shortcuts: {
+        $schema: {
+          title: 'Keyboard Shortcuts',
+          description: 'Keyboard shortcuts configuration',
+        },
+        toggleColorMode: {
+          $default: 'd',
+          $schema: {
+            title: 'Toggle Color Mode',
+            description: 'Shortcut to toggle light and dark mode. Leave empty to disable.',
+            type: 'string',
+          },
+        },
+      },
     },
   },
 })
