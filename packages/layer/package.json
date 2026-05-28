@@ -41,6 +41,7 @@
     "@nuxt/image": "^2.0.0",
     "@nuxt/kit": "^4.2.2",
     "@nuxtjs/color-mode": "^4.0.0",
+    "@nuxtjs/mcp-toolkit": "^0.17.2",
     "@nuxtjs/mdc": "^0.19.1",
     "@nuxtjs/robots": "^5.6.7",
     "@tabler/icons-vue": "^3.35.0",
