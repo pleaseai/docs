@@ -123,12 +123,17 @@ export default defineNuxtModule({
         routes.push(...buildMarkdownRoutePair('^/$', '/llms.txt'))
 
         // 2. Per-locale homepage → /llms.txt
-        //    Locales are read from runtimeConfig.public.i18n.locales (populated by
-        //    `@nuxtjs/i18n` when present). If absent, no per-locale routes are added.
-        const publicRuntime = nuxt.options.runtimeConfig?.public as
-          | { i18n?: { locales?: I18nLocale[] } }
+        //    Locales are read from the actual `@nuxtjs/i18n` module options on
+        //    `nuxt.options.i18n` (the same source used by the `nitro:config`
+        //    hook in nuxt.config.ts). `runtimeConfig.public.i18n` is not a
+        //    reliable source — the module does not always populate it, so
+        //    relying on it can cause locale routes to silently never be
+        //    generated. If absent, no per-locale routes are added.
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        const i18nOptions = (nuxt.options as any).i18n as
+          | { locales?: I18nLocale[] }
           | undefined
-        const locales: I18nLocale[] = publicRuntime?.i18n?.locales ?? []
+        const locales: I18nLocale[] = i18nOptions?.locales ?? []
         const localeCodes: string[] = locales
           .map(locale => (typeof locale === 'string' ? locale : locale.code))
           .filter((code): code is string => typeof code === 'string' && code.length > 0)
@@ -155,7 +160,10 @@ export default defineNuxtModule({
 
           let rawPath: string
           try {
-            rawPath = new URL(url).pathname
+            // Decode the pathname so URL-encoded characters (e.g. `%20` for
+            // spaces) are matched against Vercel's router, which compares
+            // against the decoded request pathname.
+            rawPath = decodeURIComponent(new URL(url).pathname)
           }
           catch {
             continue
@@ -178,8 +186,11 @@ export default defineNuxtModule({
           seenPagePaths.add(pagePath)
 
           // Escape regex metacharacters in the path so it matches literally.
+          // Allow an optional trailing slash (`/?$`) so requests like
+          // `/en/getting-started/installation/` are matched consistently with
+          // the per-locale homepage routes above.
           const escapedPath = pagePath.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
-          routes.push(...buildMarkdownRoutePair(`^${escapedPath}$`, rawPath))
+          routes.push(...buildMarkdownRoutePair(`^${escapedPath}/?$`, rawPath))
         }
 
         // Inject at the top so we fire before the SPA fallback.
