@@ -16,6 +16,8 @@ const docsSchema = z.object({
     to: z.string(),
     target: z.string().optional(),
   })).optional(),
+  // Set to false in frontmatter to exclude a page from /sitemap.xml
+  sitemap: z.boolean().optional(),
 })
 
 const collections: Record<string, ReturnType<typeof defineCollection>> = {

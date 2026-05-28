@@ -1,12 +1,12 @@
 import { existsSync } from 'node:fs'
-import { joinURL } from 'ufo'
+import { join } from 'node:path'
 
 /**
  * Returns true when the consuming app ships its own `app/pages/index.vue`,
  * in which case the layer should not define a `landing` collection.
  */
 export function landingPageExists(rootDir: string): boolean {
-  return existsSync(joinURL(rootDir, 'app', 'pages', 'index.vue'))
+  return existsSync(join(rootDir, 'app', 'pages', 'index.vue'))
 }
 
 /**
@@ -15,7 +15,7 @@ export function landingPageExists(rootDir: string): boolean {
  */
 export function docsFolderExists(rootDir: string, locale?: string): boolean {
   const docsPath = locale
-    ? joinURL(rootDir, 'content', locale, 'docs')
-    : joinURL(rootDir, 'content', 'docs')
+    ? join(rootDir, 'content', locale, 'docs')
+    : join(rootDir, 'content', 'docs')
   return existsSync(docsPath)
 }

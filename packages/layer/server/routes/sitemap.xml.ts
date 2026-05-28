@@ -1,6 +1,6 @@
 import type { Collections } from '@nuxt/content'
 import { queryCollection } from '@nuxt/content/server'
-import { joinURL, withTrailingSlash, withoutTrailingSlash } from 'ufo'
+import { joinURL, withoutTrailingSlash } from 'ufo'
 import { inferSiteURL } from '../../utils/meta'
 
 interface SitemapUrl {
@@ -36,10 +36,10 @@ function escapeXml(value: string): string {
 }
 
 function buildSitemap(urls: SitemapUrl[], siteUrl: string): string {
-  const base = siteUrl ? withoutTrailingSlash(siteUrl) : ''
+  const base = withoutTrailingSlash(siteUrl)
   const entries = urls
     .map((url) => {
-      const loc = base ? joinURL(base, url.loc) : url.loc
+      const loc = joinURL(base, url.loc)
       let entry = `  <url>\n    <loc>${escapeXml(loc)}</loc>`
       if (url.lastmod) {
         entry += `\n    <lastmod>${escapeXml(url.lastmod)}</lastmod>`
@@ -57,7 +57,15 @@ ${entries}
 
 export default defineEventHandler(async (event) => {
   const config = useRuntimeConfig(event)
-  const siteUrl = inferSiteURL() || ''
+  const siteUrl = inferSiteURL()
+
+  // Sitemap protocol requires absolute <loc> URLs. Without a site URL we have
+  // no way to produce valid entries — return 404 so consumers don't index a
+  // broken sitemap.
+  if (!siteUrl) {
+    throw createError({ statusCode: 404, statusMessage: 'Sitemap unavailable: site URL is not configured.' })
+  }
+
   const baseURL = config.app?.baseURL || '/'
 
   const availableLocales = getAvailableLocales(config.public as Record<string, unknown>)
@@ -79,7 +87,7 @@ export default defineEventHandler(async (event) => {
   for (const collection of collections) {
     try {
       const pages = await queryCollection(event, collection as keyof Collections)
-        .select('path', 'modifiedAt' as never, 'sitemap' as never)
+        .select('path', 'sitemap' as never)
         .all() as Array<Record<string, unknown> & { path?: string }>
 
       for (const page of pages) {
@@ -89,22 +97,15 @@ export default defineEventHandler(async (event) => {
         if (meta.sitemap === false) continue
         if (isNavigationPath(pagePath)) continue
 
-        const entry: SitemapUrl = {
-          loc: joinURL(baseURL, pagePath),
-        }
-
-        if (typeof meta.modifiedAt === 'string') {
-          entry.lastmod = meta.modifiedAt.split('T')[0]
-        }
-
-        urls.push(entry)
+        urls.push({ loc: joinURL(baseURL, pagePath) })
       }
     }
     catch {
-      // Collection may not exist (e.g. landing is opt-out); skip silently
+      // Collection may not exist (e.g. landing is opt-out, or i18n locale
+      // collections are not registered yet). Skip silently.
     }
   }
 
   setResponseHeader(event, 'content-type', 'application/xml')
-  return buildSitemap(urls, siteUrl ? withTrailingSlash(siteUrl) : '')
+  return buildSitemap(urls, siteUrl)
 })
