@@ -1,0 +1,25 @@
+packages/layer/modules/skills/runtime/server/routes/.well-known/skills/[...path].get.ts
+  s_2c39d075b4ad62::t_da60a51b0e09d2 73-78,80,82-83,85-86,89
+packages/layer/modules/skills/index.ts
+  s_2c39d075b4ad62::t_2f5c3a6199cec3 38
+  s_2c39d075b4ad62::t_df387346dd5592 172-177,182-189
+  s_2c39d075b4ad62::t_de5ced425507b4 15-18
+packages/layer/modules/skills/runtime/server/routes/.well-known/skills/index.get.ts
+  s_2c39d075b4ad62::t_a44ae56d939d3b 1-14
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.2",
+  "base_commit_sha": "207f398c3c3bc658945eb1617a52654a38550df7",
+  "prompts": {},
+  "sessions": {
+    "s_2c39d075b4ad62": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "6abcbcd1-7387-4f66-8b19-0b18eaf8d9f3",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Minsu Lee <amond@amond.net>"
+    }
+  }
+}
