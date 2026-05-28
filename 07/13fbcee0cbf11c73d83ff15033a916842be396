@@ -1,0 +1,21 @@
+packages/layer/modules/markdown-rewrite.ts
+  s_2c39d075b4ad62::t_e5b62784b0725e 163-166
+  s_2c39d075b4ad62::t_59471a87ec35cc 126-134,136
+  s_2c39d075b4ad62::t_5a7c6f67b6f5be 189-191,193
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.2",
+  "base_commit_sha": "0713fbcee0cbf11c73d83ff15033a916842be396",
+  "prompts": {},
+  "sessions": {
+    "s_2c39d075b4ad62": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "6abcbcd1-7387-4f66-8b19-0b18eaf8d9f3",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Minsu Lee <amond@amond.net>"
+    }
+  }
+}
