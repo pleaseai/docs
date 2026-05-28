@@ -1,0 +1,29 @@
+packages/layer/app/utils/navigation.ts
+  s_0628fe6495975d::t_86bcda3b8b99b4 8-56
+packages/layer/server/routes/sitemap.xml.ts
+  s_0628fe6495975d::t_7a90454f5efd1e 1-110
+packages/layer/app/pages/[...slug].vue
+  s_0628fe6495975d::t_86bcda3b8b99b4 66-70
+packages/layer/utils/meta.ts
+  s_0628fe6495975d::t_86bcda3b8b99b4 4,7-12,18-19
+packages/layer/utils/pages.ts
+  s_0628fe6495975d::t_bdb9e8a65960d1 1-21
+packages/layer/content.config.ts
+  s_0628fe6495975d::t_86bcda3b8b99b4 1,4-5,9-11,21-45
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.2",
+  "base_commit_sha": "4e63521cd07e3c70752c08672d300f30abc3ad0f",
+  "prompts": {},
+  "sessions": {
+    "s_0628fe6495975d": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "59dfdd4f-ca7e-475d-83c4-81b2e6dd7b1e",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Minsu Lee <amond@amond.net>"
+    }
+  }
+}
