@@ -1,0 +1,30 @@
+packages/layer/server/mcp/tools/get-page.ts
+  s_2c39d075b4ad62::t_0aa68b261da47a 1-79
+packages/layer/server/mcp/tools/list-pages.ts
+  s_2c39d075b4ad62::t_ed111a93d72e24 1-53,59-71,78,80-81
+  s_2c39d075b4ad62::t_46f1ee331e2758 54-58,72-77,79
+packages/layer/nuxt.config.ts
+  s_2c39d075b4ad62::t_49ebbf8b109438 16
+packages/layer/server/utils/content.ts
+  s_2c39d075b4ad62::t_27fca76fdd4a2c 1-58
+packages/layer/package.json
+  s_2c39d075b4ad62::t_48c2050e831502 44
+packages/layer/server/routes/sitemap.xml.ts
+  s_2c39d075b4ad62::t_54178c98ed6faf 5
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.2",
+  "base_commit_sha": "b54967571198569d465d16232fc73eda21857d32",
+  "prompts": {},
+  "sessions": {
+    "s_2c39d075b4ad62": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "6abcbcd1-7387-4f66-8b19-0b18eaf8d9f3",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Minsu Lee <amond@amond.net>"
+    }
+  }
+}
