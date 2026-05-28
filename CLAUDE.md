@@ -41,6 +41,17 @@ cd packages/layer && bun typecheck
 - **`ref/`** - Git submodules containing reference projects (docus, shadcn-vue, fumadocs)
 - **`docs/ref-analysis.md`** - Analysis summary of Docus and shadcn-vue reference projects
 
+#### Reference Submodules (pinned commits)
+
+| Submodule | Repository | Commit | Version |
+| --- | --- | --- | --- |
+| `ref/content` | [nuxt/content](https://github.com/nuxt/content) | `fbfd05b3aa1c6c500417d99ddbfe524936cfaa7b` | v3.9.0 |
+| `ref/docus` | [nuxt-content/docus](https://github.com/nuxt-content/docus) | `0eafdaaa7050f0703dc89565c8bdb4622b22bb77` | v5.4.1-2-g0eafdaaa |
+| `ref/fumadocs` | [fuma-nama/fumadocs](https://github.com/fuma-nama/fumadocs) | `7e820e27169ec7ece54b8e54d365fe1ba78f84d4` | create-fumadocs-app@16.0.19-29-g7e820e271 |
+| `ref/mdc` | [nuxt-content/mdc](https://github.com/nuxt-content/mdc) | `d4483f6d85830232fd647d44daa67ef4f2b0ebc3` | v0.19.1 |
+| `ref/shadcn-vue` | [unovue/shadcn-vue](https://github.com/unovue/shadcn-vue) | `1e2fe1769cf5bfd75a4f8d716fb26fb3ef2a2f02` | v2.3.3-25-g1e2fe176 |
+| `ref/ui` | [nuxt/ui](https://github.com/nuxt/ui) | `8dc6b222c9a3f265073a25e04f105c42c33aacc9` | v4.2.1-35-g8dc6b222c |
+
 ### Layer Package (`packages/layer`)
 
 The `@pleaseai/docs` is a Nuxt 4 layer that provides:
