@@ -1,0 +1,19 @@
+.claude/settings.json
+  s_0628fe6495975d::t_e271d83f844335 2
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.2",
+  "base_commit_sha": "b03796ffc0a009f1cff16c56ce9edf898a312cd3",
+  "prompts": {},
+  "sessions": {
+    "s_0628fe6495975d": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "59dfdd4f-ca7e-475d-83c4-81b2e6dd7b1e",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Minsu Lee <amond@amond.net>"
+    }
+  }
+}
