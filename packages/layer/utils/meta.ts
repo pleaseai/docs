@@ -1,16 +1,7 @@
 import { readFile } from 'node:fs/promises'
 import { resolve } from 'node:path'
-import process from 'node:process'
 
-export function inferSiteURL(): string | undefined {
-  return (
-    process.env.NUXT_SITE_URL
-    || (process.env.NEXT_PUBLIC_VERCEL_URL && `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`)
-    || process.env.URL // Netlify
-    || process.env.CI_PAGES_URL // Gitlab Pages
-    || process.env.CF_PAGES_URL // Cloudflare Pages
-  )
-}
+export { inferSiteURL } from './site-url'
 
 export async function getPackageJsonMetadata(dir: string): Promise<{ name: string, description?: string }> {
   try {
