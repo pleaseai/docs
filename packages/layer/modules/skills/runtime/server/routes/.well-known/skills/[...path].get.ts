@@ -70,22 +70,21 @@ export default defineEventHandler(async (event) => {
     throw createError({ statusCode: 404, statusMessage: 'Not Found' })
   }
 
-  let content: string
-  if (typeof raw === 'string') {
-    content = raw
-  }
-  else if (raw instanceof Uint8Array) {
-    content = new TextDecoder('utf-8').decode(raw)
-  }
-  else if (typeof Buffer !== 'undefined' && Buffer.isBuffer(raw)) {
-    content = raw.toString('utf-8')
-  }
-  else {
-    throw createError({ statusCode: 404, statusMessage: 'Not Found' })
-  }
-
   setResponseHeader(event, 'content-type', getContentType(filePath))
   setResponseHeader(event, 'cache-control', 'public, max-age=3600')
 
-  return content
+  // Return raw bytes for non-string payloads so binary files (images,
+  // archives, etc.) are served untouched. UTF-8 decoding would corrupt
+  // them and produces unnecessary overhead for text payloads.
+  if (typeof raw === 'string') {
+    return raw
+  }
+  if (raw instanceof Uint8Array) {
+    return raw
+  }
+  if (typeof Buffer !== 'undefined' && Buffer.isBuffer(raw)) {
+    return raw
+  }
+
+  throw createError({ statusCode: 404, statusMessage: 'Not Found' })
 })

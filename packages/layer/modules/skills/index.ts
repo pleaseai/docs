@@ -12,8 +12,10 @@ import { parse as parseYaml } from 'yaml'
  * - `764329f5` feat(skills): make directory configurable via module options
  *
  * Skills live under `<rootDir>/<dir>/<name>/SKILL.md`, each with YAML
- * frontmatter `{ name, description }`. Names must satisfy the Anthropic
- * Agent Skills spec: `/^[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/`, max 64 chars.
+ * frontmatter `{ name, description }`. Both fields are required; `name`
+ * must satisfy the Anthropic Agent Skills spec
+ * (`/^[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/`, max 64 chars) and `description`
+ * is capped at 200 chars.
  */
 
 export interface ModuleOptions {
@@ -33,6 +35,7 @@ interface SkillEntry {
 
 const SKILL_NAME_REGEX = /^[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/
 const MAX_NAME_LENGTH = 64
+const MAX_DESCRIPTION_LENGTH = 200
 
 export default defineNuxtModule<ModuleOptions>({
   meta: {
@@ -166,12 +169,24 @@ async function scanSkills(skillsDir: string, log: ReturnType<typeof useLogger>):
     const content = await readFile(skillMdPath, 'utf-8')
     const frontmatter = parseFrontmatter(content)
 
-    if (!frontmatter?.description) {
+    if (!frontmatter?.name) {
+      log.warn(`Skipping skill "${entry.name}": missing name in SKILL.md frontmatter`)
+      continue
+    }
+
+    if (!frontmatter.description) {
       log.warn(`Skipping skill "${entry.name}": missing description in SKILL.md frontmatter`)
       continue
     }
 
-    const name = frontmatter.name || entry.name
+    if (frontmatter.description.length > MAX_DESCRIPTION_LENGTH) {
+      log.warn(
+        `Skipping skill "${entry.name}": description exceeds ${MAX_DESCRIPTION_LENGTH} character limit`,
+      )
+      continue
+    }
+
+    const name = frontmatter.name
     if (!validateSkillName(name, entry.name, log)) {
       continue
     }
