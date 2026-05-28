@@ -9,6 +9,7 @@ export default defineNuxtConfig({
     resolve('./modules/css'),
     resolve('./modules/shadcn'),
     resolve('./modules/skills'),
+    resolve('./modules/markdown-rewrite'),
     '@nuxtjs/color-mode',
     '@nuxt/content',
     '@nuxt/image',
