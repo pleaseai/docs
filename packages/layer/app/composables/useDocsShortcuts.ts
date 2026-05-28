@@ -1,19 +1,29 @@
 import { onKeyStroke } from '@vueuse/core'
+import { computed } from 'vue'
 
 /**
  * Returns `true` when the keystroke originated from an editable element
  * (`<input>`, `<textarea>`, or any element with `[contenteditable]`),
  * in which case the shortcut should be ignored so the user can type freely.
+ *
+ * Traverses up the DOM tree from the event target so that non-`HTMLElement`
+ * descendants (e.g. `SVGElement`, `MathMLElement`) inside an editable
+ * container are still treated as editable.
  */
 function isEditableTarget(target: EventTarget | null): boolean {
-  if (!(target instanceof HTMLElement))
+  let el: Node | null = target instanceof Node ? target : null
+  while (el && !(el instanceof HTMLElement)) {
+    el = el.parentNode
+  }
+
+  if (!el)
     return false
 
-  const tag = target.tagName
+  const tag = el.tagName
   if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT')
     return true
 
-  if (target.isContentEditable)
+  if (el.isContentEditable)
     return true
 
   return false
