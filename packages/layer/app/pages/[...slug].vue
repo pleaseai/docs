@@ -64,8 +64,10 @@ useSeoMeta({
   description: page.value?.description,
 })
 
-// Register raw markdown variant so static builds expose /raw/*.md for AI agents
-if (import.meta.server) {
+// Register raw markdown variant so static builds expose /raw/*.md for AI agents.
+// Only register when a source page actually exists — otherwise crawler-discovered
+// section index routes try to prerender a /raw/*.md that has no backing file and 404.
+if (import.meta.server && page.value) {
   prerenderRoutes(`/raw${route.path}.md`)
 }
 </script>

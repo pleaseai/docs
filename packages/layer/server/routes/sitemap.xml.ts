@@ -1,7 +1,7 @@
 import type { Collections } from '@nuxt/content'
 import { queryCollection } from '@nuxt/content/server'
 import { joinURL, withoutTrailingSlash } from 'ufo'
-import { inferSiteURL } from '../../utils/meta'
+import { inferSiteURL } from '../../utils/site-url'
 
 interface SitemapUrl {
   loc: string
