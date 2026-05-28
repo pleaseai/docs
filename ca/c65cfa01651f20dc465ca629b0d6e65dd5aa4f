@@ -1,0 +1,29 @@
+packages/layer/modules/skills/runtime/server/routes/.well-known/skills/[...path].get.ts
+  s_2c39d075b4ad62::t_1c632a5cd7b11e 1-54,74-81
+  s_2c39d075b4ad62::t_1449fab0c05628 55-73
+packages/layer/package.json
+  s_2c39d075b4ad62::t_20a13a46815754 76
+packages/layer/modules/skills/runtime/server/routes/.well-known/skills/index.get.ts
+  s_2c39d075b4ad62::t_d7ab5eb163bbc0 1-39,51-55,61-64,66-67,70-100
+  s_2c39d075b4ad62::t_78b19622d54190 40-50,56-60,65,68-69
+packages/layer/modules/skills/index.ts
+  s_2c39d075b4ad62::t_922a0f5236eb6f 1-200
+packages/layer/nuxt.config.ts
+  s_2c39d075b4ad62::t_4df0aa4fa0257e 11
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.2",
+  "base_commit_sha": "cac65cfa01651f20dc465ca629b0d6e65dd5aa4f",
+  "prompts": {},
+  "sessions": {
+    "s_2c39d075b4ad62": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "6abcbcd1-7387-4f66-8b19-0b18eaf8d9f3",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Minsu Lee <amond@amond.net>"
+    }
+  }
+}
