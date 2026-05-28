@@ -36,7 +36,7 @@ export interface UseSeoOptions {
 
 type JsonLdScript = {
   type: 'application/ld+json'
-  innerHTML: string
+  textContent: string
 } & { [key: `data-${string}`]: string }
 
 type LinkTag = {
@@ -125,51 +125,54 @@ export function useSeo(options: UseSeoOptions): void {
     script: computed<JsonLdScript[]>(() => {
       const scripts: JsonLdScript[] = []
 
-      if (!baseUrl.value || !title.value) return scripts
+      if (!baseUrl.value) return scripts
 
       const pageUrl = joinURL(baseUrl.value, route.path)
 
-      if (type.value === 'article') {
-        const articleSchema: Record<string, unknown> = {
-          '@context': 'https://schema.org',
-          '@type': 'Article',
-          'headline': title.value,
-          'description': description.value,
-          'url': pageUrl,
-          'mainEntityOfPage': {
-            '@type': 'WebPage',
-            '@id': pageUrl,
-          },
-        }
-        if (publishedAt.value) {
-          articleSchema.datePublished = publishedAt.value
-        }
-        if (modifiedAt.value) {
-          articleSchema.dateModified = modifiedAt.value
-        }
-        if (siteName.value) {
-          articleSchema.publisher = {
-            '@type': 'Organization',
-            'name': siteName.value,
+      // Article/WebSite schemas require a title; breadcrumbs do not.
+      if (title.value) {
+        if (type.value === 'article') {
+          const articleSchema: Record<string, unknown> = {
+            '@context': 'https://schema.org',
+            '@type': 'Article',
+            'headline': title.value,
+            'description': description.value,
+            'url': pageUrl,
+            'mainEntityOfPage': {
+              '@type': 'WebPage',
+              '@id': pageUrl,
+            },
           }
+          if (publishedAt.value) {
+            articleSchema.datePublished = publishedAt.value
+          }
+          if (modifiedAt.value) {
+            articleSchema.dateModified = modifiedAt.value
+          }
+          if (siteName.value) {
+            articleSchema.publisher = {
+              '@type': 'Organization',
+              'name': siteName.value,
+            }
+          }
+          scripts.push({
+            type: 'application/ld+json',
+            textContent: JSON.stringify(articleSchema),
+          })
         }
-        scripts.push({
-          type: 'application/ld+json',
-          innerHTML: JSON.stringify(articleSchema),
-        })
-      }
-      else if (type.value === 'website') {
-        const websiteSchema: Record<string, unknown> = {
-          '@context': 'https://schema.org',
-          '@type': 'WebSite',
-          'name': siteName.value ?? title.value,
-          'description': description.value,
-          'url': baseUrl.value,
+        else if (type.value === 'website') {
+          const websiteSchema: Record<string, unknown> = {
+            '@context': 'https://schema.org',
+            '@type': 'WebSite',
+            'name': siteName.value ?? title.value,
+            'description': description.value,
+            'url': baseUrl.value,
+          }
+          scripts.push({
+            type: 'application/ld+json',
+            textContent: JSON.stringify(websiteSchema),
+          })
         }
-        scripts.push({
-          type: 'application/ld+json',
-          innerHTML: JSON.stringify(websiteSchema),
-        })
       }
 
       if (breadcrumbs.value && breadcrumbs.value.length > 0) {
@@ -185,7 +188,7 @@ export function useSeo(options: UseSeoOptions): void {
         }
         scripts.push({
           type: 'application/ld+json',
-          innerHTML: JSON.stringify(breadcrumbSchema),
+          textContent: JSON.stringify(breadcrumbSchema),
         })
       }
 
