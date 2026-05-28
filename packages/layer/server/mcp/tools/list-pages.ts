@@ -1,0 +1,81 @@
+import type { Collections } from '@nuxt/content'
+import { queryCollection } from '@nuxt/content/server'
+import { joinURL } from 'ufo'
+import { z } from 'zod'
+import { inferSiteURL } from '../../../utils/meta'
+import { getAvailableLocales, getCollectionsToQuery, isNavigationPath } from '../../utils/content'
+
+export default defineMcpTool({
+  description: `Lists all available documentation pages with their categories and basic information.
+
+WHEN TO USE: Use this tool when you need to EXPLORE or SEARCH for documentation about a topic but don't know the exact page path. Common scenarios:
+- "Find documentation about markdown features" - explore available guides
+- "Show me all getting started guides" - browse introductory content
+- "Search for advanced configuration options" - find specific topics
+- User asks general questions without specifying exact pages
+- You need to understand the overall documentation structure
+
+WHEN NOT TO USE: If you already know the specific page path (e.g., "/en/getting-started/installation"), use get-page directly instead.
+
+WORKFLOW: This tool returns page titles, descriptions, and paths. After finding relevant pages, use get-page to retrieve the full content of specific pages that match the user's needs.
+
+OUTPUT: Returns a structured list with:
+- title: Human-readable page name
+- path: Exact path for use with get-page
+- description: Brief summary of page content
+- locale: Locale code the page belongs to (empty when i18n is not configured)
+- url: Full URL for reference`,
+  annotations: {
+    readOnlyHint: true,
+    destructiveHint: false,
+    idempotentHint: true,
+    openWorldHint: false,
+  },
+  inputSchema: {
+    locale: z.string().optional().describe('The locale to filter pages by (e.g., "en", "fr")'),
+  },
+  inputExamples: [
+    { locale: 'en' },
+    {},
+  ],
+  cache: '1h',
+  handler: async ({ locale }) => {
+    const event = useEvent()
+    const config = useRuntimeConfig(event)
+    const publicConfig = config.public as Record<string, unknown>
+
+    // Prefer the live request origin so URLs match the host the client
+    // actually used (works around app.baseURL-only setups in prod).
+    const siteUrl = getRequestURL(event).origin || inferSiteURL()
+    const baseURL = config.app?.baseURL || '/'
+    const availableLocales = getAvailableLocales(publicConfig)
+    const collections = getCollectionsToQuery(locale, availableLocales)
+
+    // Tolerate missing collections (e.g. an i18n locale that isn't registered
+    // yet) so a single bad collection doesn't break the whole listing.
+    const allPages = await Promise.all(
+      collections.map(async (collectionName) => {
+        try {
+          const pages = await queryCollection(event, collectionName as keyof Collections)
+            .select('title', 'path', 'description')
+            .all() as Array<{ title: string, path: string, description: string }>
+
+          return pages
+            .filter(page => !isNavigationPath(page.path))
+            .map(page => ({
+              title: page.title,
+              path: page.path,
+              description: page.description,
+              locale: collectionName.startsWith('docs_') ? collectionName.replace('docs_', '') : '',
+              url: siteUrl ? joinURL(siteUrl, baseURL, page.path) : joinURL(baseURL, page.path),
+            }))
+        }
+        catch {
+          return []
+        }
+      }),
+    )
+
+    return allPages.flat()
+  },
+})

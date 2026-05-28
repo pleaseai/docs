@@ -2,24 +2,11 @@ import type { Collections } from '@nuxt/content'
 import { queryCollection } from '@nuxt/content/server'
 import { joinURL, withoutTrailingSlash } from 'ufo'
 import { inferSiteURL } from '../../utils/site-url'
+import { getAvailableLocales, isNavigationPath } from '../utils/content'
 
 interface SitemapUrl {
   loc: string
   lastmod?: string
-}
-
-interface RuntimePublicI18n {
-  locales?: Array<string | { code: string }>
-}
-
-function getAvailableLocales(publicConfig: Record<string, unknown>): string[] {
-  const i18n = publicConfig.i18n as RuntimePublicI18n | undefined
-  if (!i18n?.locales) return []
-  return i18n.locales.map(locale => typeof locale === 'string' ? locale : locale.code)
-}
-
-function isNavigationPath(path: string): boolean {
-  return path.endsWith('.navigation') || path.includes('/.navigation/')
 }
 
 function escapeXml(value: string): string {
