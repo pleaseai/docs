@@ -1,0 +1,27 @@
+packages/layer/app/composables/useDocsShortcuts.ts
+  s_2c39d075b4ad62::t_d741d70ec7ef79 1-63
+packages/layer/nuxt.schema.ts
+  s_2c39d075b4ad62::t_62922f2431a515 110-123
+packages/layer/app/plugins/shortcuts.client.ts
+  s_2c39d075b4ad62::t_d741d70ec7ef79 1-9
+packages/layer/modules/config.ts
+  s_2c39d075b4ad62::t_62922f2431a515 27-29
+packages/layer/app/app.config.ts
+  s_2c39d075b4ad62::t_62922f2431a515 20-22
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.2",
+  "base_commit_sha": "f5032dfb87c97be6eca523f15a17202df81d37f8",
+  "prompts": {},
+  "sessions": {
+    "s_2c39d075b4ad62": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "6abcbcd1-7387-4f66-8b19-0b18eaf8d9f3",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Minsu Lee <amond@amond.net>"
+    }
+  }
+}
