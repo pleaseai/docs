@@ -24,6 +24,9 @@ export default defineNuxtModule({
         url: gitInfo?.url,
         branch: getGitBranch(),
       },
+      shortcuts: {
+        toggleColorMode: 'd',
+      },
     })
 
     // SEO defaults
