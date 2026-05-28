@@ -63,6 +63,11 @@ useSeoMeta({
   title: page.value?.title,
   description: page.value?.description,
 })
+
+// Register raw markdown variant so static builds expose /raw/*.md for AI agents
+if (import.meta.server) {
+  prerenderRoutes(`/raw${route.path}.md`)
+}
 </script>
 
 <template>

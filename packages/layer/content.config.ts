@@ -1,9 +1,13 @@
-import { defineCollection, defineContentConfig } from '@nuxt/content'
+import { defineCollection, defineContentConfig, z } from '@nuxt/content'
 import { useNuxt } from '@nuxt/kit'
 import { joinURL } from 'ufo'
-import { z } from 'zod'
+import { docsFolderExists, landingPageExists } from './utils/pages'
+
 const { options } = useNuxt()
 const cwd = joinURL(options.rootDir, 'content')
+
+const hasLandingPage = landingPageExists(options.rootDir)
+const hasDocsFolder = docsFolderExists(options.rootDir)
 
 const docsSchema = z.object({
   links: z.array(z.object({
@@ -14,23 +18,28 @@ const docsSchema = z.object({
   })).optional(),
 })
 
-export default defineContentConfig({
-  collections: {
-    landing: defineCollection({
-      type: 'page',
-      source: {
-        cwd,
-        include: 'index.md',
-      },
-    }),
-    docs: defineCollection({
-      type: 'page',
-      source: {
-        cwd,
-        include: '**',
-        exclude: ['index.md'],
-      },
-      schema: docsSchema,
-    }),
-  },
-})
+const collections: Record<string, ReturnType<typeof defineCollection>> = {
+  docs: defineCollection({
+    type: 'page',
+    source: {
+      cwd,
+      include: hasDocsFolder ? 'docs/**' : '**',
+      prefix: hasDocsFolder ? '/docs' : '/',
+      exclude: ['index.md'],
+    },
+    schema: docsSchema,
+  }),
+}
+
+// Only define the landing collection when the consuming app does not ship its own index.vue
+if (!hasLandingPage) {
+  collections.landing = defineCollection({
+    type: 'page',
+    source: {
+      cwd,
+      include: 'index.md',
+    },
+  })
+}
+
+export default defineContentConfig({ collections })
