@@ -1,0 +1,22 @@
+packages/layer/app/pages/[...slug].vue
+  s_2c39d075b4ad62::t_def6b8267a5ac8 14-17,66-72
+packages/layer/app/composables/useSeo.ts
+  s_2c39d075b4ad62::t_b04eef6086b0ed 1-36,38-39,41,43-45,47-195
+  s_2c39d075b4ad62::t_8bbe5c72cc7fd5 37,40,42,46
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.2",
+  "base_commit_sha": "2b7efc9501c0a967a0f78576c5edcc11abf191a9",
+  "prompts": {},
+  "sessions": {
+    "s_2c39d075b4ad62": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "6abcbcd1-7387-4f66-8b19-0b18eaf8d9f3",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Minsu Lee <amond@amond.net>"
+    }
+  }
+}
