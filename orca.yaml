@@ -11,3 +11,4 @@ scripts:
     bunx @pleaseai/worktreeinclude "$ORCA_ROOT_PATH" "$ORCA_WORKTREE_PATH"
     git submodule update --init --recursive
     bun install
+    bun run dev:prepare
