@@ -79,7 +79,7 @@
     "zod-to-json-schema": "^3.25.0"
   },
   "devDependencies": {
-    "better-sqlite3": "^11.9.1",
+    "better-sqlite3": "^12.11.1",
     "typescript": "^5.9.3",
     "vue-tsc": "^2.0.0"
   }
