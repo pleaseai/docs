@@ -11,6 +11,7 @@ updates:
       prefix: "chore(deps)"
     groups:
       minor-and-patch:
+        group-by: dependency-name
         update-types:
           - minor
           - patch
