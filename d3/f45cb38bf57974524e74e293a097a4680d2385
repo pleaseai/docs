@@ -1,0 +1,19 @@
+orca.yaml
+  s_1379eee0570971::t_3307718bf3c70b 8-10
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "d3f45cb38bf57974524e74e293a097a4680d2385",
+  "prompts": {},
+  "sessions": {
+    "s_1379eee0570971": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "52ff7b66-6d19-43ad-ab06-8bd5018dd6d1",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Minsu Lee <minsu.lee@pleaseai.dev>"
+    }
+  }
+}
