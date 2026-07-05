@@ -1,17 +1,15 @@
 version: 2
 updates:
+  # Bun workspaces: the root entry covers workspace member package.json
+  # files too (apps/*, packages/*) — no per-directory entries needed.
   - package-ecosystem: bun
-    directories:
-      - "/"
-      - "/apps/docs"
-      - "/packages/layer"
+    directory: "/"
     schedule:
       interval: weekly
     commit-message:
       prefix: "chore(deps)"
     groups:
       minor-and-patch:
-        group-by: dependency-name
         update-types:
           - minor
           - patch
