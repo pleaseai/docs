@@ -5,10 +5,12 @@
 #   $ORCA_ROOT_PATH     — main checkout (copy source)
 #   $ORCA_WORKTREE_PATH — newly created worktree (copy target)
 
+# The ref/ submodules are reference-only and not required for development
+# (see CONTRIBUTING.md), so worktree setup skips them to stay fast. Run
+# `git submodule update --init --recursive` manually if you need them.
 scripts:
   setup: |
     set -e
     bunx @pleaseai/worktreeinclude "$ORCA_ROOT_PATH" "$ORCA_WORKTREE_PATH"
-    git submodule update --init --recursive
     bun install
     bun run dev:prepare
