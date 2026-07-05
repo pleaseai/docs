@@ -1,0 +1,19 @@
+.github/dependabot.yml
+  s_d04ae854f5cb91::t_2aafd96f32b5de 1-27
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "a878fa806f336d838e877f3e24dc264a3d66aa7b",
+  "prompts": {},
+  "sessions": {
+    "s_d04ae854f5cb91": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "d5848a4e-1f36-4489-a445-a25659eaaa65",
+        "model": "claude-fable-5"
+      },
+      "human_author": "Minsu Lee <minsu.lee@pleaseai.dev>"
+    }
+  }
+}
