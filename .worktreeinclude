@@ -1,0 +1,19 @@
+# .worktreeinclude — gitignored files to copy into new worktrees
+# Uses .gitignore syntax. Only files matching a pattern AND ignored by git
+# are copied. Claude Code --worktree handles this automatically; external
+# tools (orca/conductor) run `bunx @pleaseai/worktreeinclude <src> <dst>`
+# from their setup hook (see orca.yaml).
+
+# Root environment variables (dotenvx)
+.env
+.env.local
+.env.*.local
+.env.keys
+
+# Per-workspace environment variables
+apps/*/.env
+apps/*/.env.local
+packages/*/.env
+
+# Claude Code local settings (permissions, env, plugin overrides)
+.claude/settings.local.json

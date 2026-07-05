@@ -1,0 +1,13 @@
+# orca.yaml — setup script run when an Orca worktree is created
+# Copies gitignored local files listed in .worktreeinclude into the new
+# worktree, then installs dependencies.
+# Env vars:
+#   $ORCA_ROOT_PATH     — main checkout (copy source)
+#   $ORCA_WORKTREE_PATH — newly created worktree (copy target)
+
+scripts:
+  setup: |
+    set -e
+    bunx @pleaseai/worktreeinclude "$ORCA_ROOT_PATH" "$ORCA_WORKTREE_PATH"
+    git submodule update --init --recursive
+    bun install
