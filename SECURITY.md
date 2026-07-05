@@ -19,7 +19,7 @@ Instead, report them privately through GitHub's
 [private vulnerability reporting](https://docs.github.com/en/code-security/security-advisories/guidance-on-reporting-and-writing-information-about-vulnerabilities/privately-reporting-a-security-vulnerability):
 go to the repository's **Security** tab and click **"Report a vulnerability"**.
 
-If you cannot use that channel, email **gon.yun@pleaseai.dev** instead.
+If you cannot use that channel, email **security@pleaseai.dev** instead.
 
 Please include:
 
