@@ -1,0 +1,6 @@
+# Community health files intentionally publish a contact email address;
+# Codacy's PII rule flags any email, so exclude these docs from analysis.
+---
+exclude_paths:
+  - "SECURITY.md"
+  - "CODE_OF_CONDUCT.md"
