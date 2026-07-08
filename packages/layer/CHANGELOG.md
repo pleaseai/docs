@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.2.7](https://github.com/pleaseai/docs/compare/docs-please-v0.2.6...docs-please-v0.2.7) (2026-07-08)
+
+
+### Features
+
+* **layer:** add 'd' shortcut to toggle color mode ([#30](https://github.com/pleaseai/docs/issues/30)) ([9df234a](https://github.com/pleaseai/docs/commit/9df234a89a92778ac095314327523c5a0f61f2f5))
+* **layer:** add Vercel markdown-rewrite module ([#32](https://github.com/pleaseai/docs/issues/32)) ([7074801](https://github.com/pleaseai/docs/commit/7074801fd75dacc162aa8f83119edf20601119ff))
+* **layer:** port first docus upstream bundle ([#27](https://github.com/pleaseai/docs/issues/27)) ([5759e4c](https://github.com/pleaseai/docs/commit/5759e4c47d5f34ee0f612af69c860484cf109432))
+* **mcp:** add MCP server tools (list-pages, get-page) ([#33](https://github.com/pleaseai/docs/issues/33)) ([f52dc38](https://github.com/pleaseai/docs/commit/f52dc38fa07b010e334a5c44005704f8457fa84a))
+* **seo:** add useSeo composable with JSON-LD and canonical ([#29](https://github.com/pleaseai/docs/issues/29)) ([1267889](https://github.com/pleaseai/docs/commit/12678892610bc1f096978817cd05f9bb6e34bf3e))
+* **skills:** add .well-known/skills module ([#31](https://github.com/pleaseai/docs/issues/31)) ([903dcfc](https://github.com/pleaseai/docs/commit/903dcfc205d1724c3d81588266f616fa7ea27e83))
+
 ## [0.2.6](https://github.com/pleaseai/docs/compare/docs-please-v0.2.5...docs-please-v0.2.6) (2025-12-22)
 
 
